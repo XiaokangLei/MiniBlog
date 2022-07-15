@@ -1,0 +1,126 @@
+/* 底部评论 */
+.comment-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 0 6px rgba(30, 20, 20, 0.1);
+  z-index: 1;
+}
+
+/* 适配分享按钮 */
+.share-button {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+}
+
+/* 文章内容 */
+.detail-body {
+  line-height: 64rpx;
+  letter-spacing: 1px;
+  overflow: hidden;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* “阅读更多”样式 */
+.detail-read-more {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.detail-readmore-mask {
+  height: 200rpx;
+  width: 100%;
+  box-sizing: border-box;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 80%);
+}
+
+.detail-readmore-btn {
+  width: 100%;
+  height: 64rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+  color: #2f80ed;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.detail-readmore-btn::after {
+  content: "";
+  display: inline-block;
+  border: solid #2f80ed;
+  border-width: 0 0 2px 2px;
+  padding: 3px;
+  position: absolute;
+  right: 50%;
+  bottom: 6rpx;
+  transform: translateX(4px) rotate(-45deg);
+  opacity: 0.6;
+}
+
+/* 头像样式 */
+.avatar {
+  width: 70rpx;
+  height: 70rpx;
+  padding: 0;
+  margin-left: 20rpx;
+  background: none;
+}
+
+.avatar image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 100rpx;
+}
+
+/* 悬浮工具栏 */
+.fixed-tools-view {
+  position: fixed;
+  right: 40rpx;
+  bottom: -360rpx;
+  width: 60rpx;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.fixed-tools-view .icon-view {
+  position: relative;
+  background: #ffffff;
+  border: 1rpx solid #e8e8e8;
+  height: 0rpx;
+  width: 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40rpx;
+  color: #585858;
+  border-radius: 1024rpx;
+  visibility: hidden;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.fixed-tools-view .icon-view.show {
+  height: 64rpx;
+  width: 64rpx;
+  visibility: visible;
+}
+
+.fixed-tools-view .icon-view.show+.icon-view.show {
+  margin-top: 24rpx;
+}
+
+.fixed-tools-view.show {
+  bottom: 120rpx;
+}

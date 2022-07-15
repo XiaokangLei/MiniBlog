@@ -1,0 +1,23 @@
+/* pages/mine/avatar/avatar.wxss */
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  padding: 0;
+  background: none;
+}
+
+.avatar image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+}
+
+.weui-input {
+  width: 90%;
+  height: 50px;
+  margin: 20px auto;
+  background: rgb(255, 254, 254);
+  border-radius: 5px;
+  padding-left: 15px;
+}

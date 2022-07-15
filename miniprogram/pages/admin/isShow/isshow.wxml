@@ -1,0 +1,22 @@
+<!--pages/admin/isShow/isshow.wxml-->
+<form bindsubmit="formSubmit">
+  <!-- 评论、海报和打赏 -->
+  <view class="cu-bar bg-white solid-bottom">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue'></text>
+      开启评论、海报和打赏
+    </view>
+  </view>
+  <view class="cu-list menu shadow-lg">
+    <view class="cu-form-group">
+      <view class="title">是否开启：</view>
+      <switch name='isShowStatus' checked="{{isShow}}"></switch>
+    </view>
+  </view>
+
+  <view class="box">
+    <view class="cu-bar btn-group foot">
+      <button class="cu-btn bg-blue shadow-blur lg" formType="submit">保存</button>
+    </view>
+  </view>
+</form>

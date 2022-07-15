@@ -1,0 +1,79 @@
+<form bindsubmit="formSubmit">
+  <!-- 阅读更多视频广告位 -->
+  <view class="cu-bar bg-white solid-bottom">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue'></text>
+      阅读更多视频广告位
+    </view>
+  </view>
+  <view class="cu-list menu shadow-lg">
+    <view class="cu-form-group">
+      <view class="title">是否开启：</view>
+      <switch name='readMoreStatus' checked="{{advert.readMoreStatus}}"></switch>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">广告位ID：</view>
+      <input name='readMoreId' placeholder="公众平台配置" value="{{advert.readMoreId}}"></input>
+    </view>
+  </view>
+
+  <!-- 文章详情Banner广告位 -->
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue '></text>
+      文章详情Banner广告位
+    </view>
+  </view>
+  <view class="cu-list menu shadow-lg">
+    <view class="cu-form-group">
+      <view class="title">是否开启：</view>
+      <switch name='bannerStatus' checked="{{advert.bannerStatus}}"></switch>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">广告位ID：</view>
+      <input name='bannerId' placeholder="公众平台配置" value="{{advert.bannerId}}"></input>
+    </view>
+  </view>
+
+  <!-- 观看视频任务广告 -->
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue '></text>
+      观看视频任务广告
+    </view>
+  </view>
+  <view class="cu-list menu shadow-lg">
+    <view class="cu-form-group">
+      <view class="title">是否开启：</view>
+      <switch name='taskVideoStatus' checked="{{advert.taskVideoStatus}}"></switch>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">广告位ID：</view>
+      <input name='taskVideoId' placeholder="公众平台配置" value="{{advert.taskVideoId}}"></input>
+    </view>
+  </view>
+
+  <!-- 积分中心底部广告 -->
+  <view class="cu-bar bg-white solid-bottom margin-top">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue '></text>
+      积分中心底部广告
+    </view>
+  </view>
+  <view class="cu-list menu shadow-lg">
+    <view class="cu-form-group">
+      <view class="title">是否开启：</view>
+      <switch name='pointsStatus' checked="{{advert.pointsStatus}}"></switch>
+    </view>
+    <view class="cu-form-group">
+      <view class="title">广告位ID：</view>
+      <input name='pointsId' placeholder="公众平台配置" value="{{advert.pointsId}}"></input>
+    </view>
+  </view>
+
+  <view class="box">
+    <view class="cu-bar btn-group foot">
+      <button class="cu-btn bg-blue shadow-blur lg" formType="submit">保存</button>
+    </view>
+  </view>
+</form>

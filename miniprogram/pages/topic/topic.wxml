@@ -1,0 +1,19 @@
+<view class="cu-list menu card-menu margin-top" wx:for="{{classifyList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
+
+  <view class="cu-item bg-img" style="background-image: url({{item.url}}); height: 160rpx;">
+    <view class="content padding-tb-sm">
+      <view class="text-orange">
+        <text class="cuIcon-title"></text>
+        <text class="text-bold">{{item.value.classifyName}}</text>
+      </view>
+      <view class="text-gray text-sm padding-top-xs padding-left-xs">
+        {{item.value.classifyDesc}}
+      </view>
+    </view>
+  </view>
+  
+</view>
+
+<view wx:if="{{loading}}">
+  <view class="cu-load loading text-orange"></view>
+</view>

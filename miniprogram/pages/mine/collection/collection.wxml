@@ -1,0 +1,32 @@
+<import src="/templates/nodata.wxml" />
+
+<view wx:if="{{loading}}">
+  <view class="cu-load loading text-orange"></view>
+</view>
+
+<!--文章列表-->
+<view wx:for="{{postRelated}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item.postId}}" bindtap="bindPostDetail">
+  <view class="cu-card article">
+    <view class="cu-item shadow">
+      <view class="flex">
+        <view class="title text-cut" style="max-width:580rpx">{{item.postTitle}}</view>
+        <view class="margin-tb-sm cu-tag bg-red light sm round">{{item.postClassify}}</view>
+      </view>
+      <view class="content">
+        <image src="{{item.postUrl}}" mode="aspectFill"></image>
+        <view class="desc">
+          <view class="text-content">{{item.postDigest}}</view>
+          <view class='text-right text-gray text-sm padding-right' wx:if="{{item.createTime}}">
+            <text class="cuIcon-timefill"></text>
+            {{timeDesc}} {{item.createTime}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 数据不存在 -->
+<view wx:if="{{nodata}}">
+  <template is="nodata" />
+</view>

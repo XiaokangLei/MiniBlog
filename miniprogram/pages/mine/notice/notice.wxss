@@ -1,0 +1,7 @@
+.margin-top-self {
+  margin-top: 120rpx;
+}
+
+.image{
+  max-height: 320rpx;
+}

@@ -1,0 +1,172 @@
+<import src="/templates/nodata.wxml" />
+
+<!-- Loading -->
+<view wx:if="{{!post.title}}">
+  <view class="cu-load loading text-orange"></view>
+</view>
+
+<!-- 文章详情 -->
+<view class="bg-white" wx:else>
+  <view class="cu-card dynamic no-card">
+    <view class="cu-item shadow">
+      <view class='margin-tb-sm text-center text-bold text-xl'>{{post.title}}</view>
+      <view class="text-center margin-bottom-sm">{{m1.format(post._createTime)}}</view>
+      <view class="grid col-1 flex-sub padding-lr">
+        <view class="bg-img only-img" style="background-image:url({{post.defaultImageUrl}})" />
+      </view>
+      <view class='text-gray text-sm text-right padding' wx:if="{{post.title}}">
+        <text class="cuIcon-attentionfill" />
+        {{post.totalVisits}}
+        <text class="cuIcon-likefill padding-left-xs" />
+        {{post.totalZans}}
+        <text class="cuIcon-messagefill padding-left-xs" />
+        {{post.totalComments}}
+      </view>
+    </view>
+  </view>
+  <view class="detail-body" style="height:{{hideArticle}}">
+    <towxml nodes="{{post.content}}" />
+    <!--<template is="entry" data="{{...post.content}}" />-->
+    <!-- <view class="margin-xs padding-sm text-blue" bindtap='showoriginalUrl'>阅读原文</view> -->
+    <!-- 阅读更多 -->
+    <view class="detail-read-more" wx:if="{{hideArticle != ''}}">
+      <view class="detail-readmore-mask">
+        <view class="detail-readmore-btn margin-bottom-xs" bindtap="readMore">观看视频，阅读更多...</view>
+      </view>
+    </view>
+    <!-- <view class="padding-xl margin-lr">
+      <button class="cu-btn block bg-blue margin-tb-sm lg">
+        <text class="cuIcon-loading2 iconfont-spin"></text> 源码下载</button>
+    </view> -->
+  </view>
+</view>
+
+<!-- 广告占坑 -->
+<view wx:if="{{showBanner}}" class="bg-white cu-item margin-top-xs">
+  <view class="content padding-right-xs padding-left-xs">
+    <ad binderror="adError" bindclose="adClose" unit-id="{{showBannerId}}"></ad>
+  </view>
+</view>
+
+<!-- 评论列表 -->
+<view class="bg-white margin-top-xs" wx:if="{{post.title && isAdmin}}">
+
+  <view class="cu-bar bg-white">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue '></text>
+      共{{post.totalComments||0}}条评论
+    </view>
+  </view>
+
+  <!-- 数据不存在 -->
+  <view wx:if="{{nodata}}">
+    <template is="nodata" data="{{nodata_str}}" />
+  </view>
+
+  <!-- 评论列表 -->
+  <view class="cu-list menu menu-avatar comment solids-top">
+    <view class="cu-item" wx:for="{{commentList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <view class="cu-avatar round" style="background-image:url({{item.cAvatarUrl}});" data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item._openid}}" bindtap="focusComment"></view>
+      <view class='content'>
+        <view data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item._openid}}" bindtap="focusComment">
+          <view>
+            <view class="{{item.isVip ? 'text-orange' : 'text-grey'}}">
+              {{item.cNickName}}
+              <text wx:if="{{item.isVip}}" class="cuIcon-vip"></text>
+            </view>
+            <!-- 评论内容 -->
+            <view class='text-gray text-content text-df'>{{item.comment}}</view>
+          </view>
+        </view>
+        <view class='padding-sm radius  text-sm text-gray'>
+          <view class="flex" wx:for="{{item.childComment}}" wx:key="id" wx:for-index="id" wx:for-item="childItem">
+            <view data-id="{{item._id}}" data-name="{{childItem.cNickName}}" data-openid="{{childItem._openid}}" bindtap="focusComment">
+              <view class="{{childItem.isVip ? 'text-orange' : 'text-grey'}}">{{childItem.cNickName}}
+                <text wx:if="{{childItem.isVip}}" class="cuIcon-vip"><text class="text-grey">：{{childItem.comment}}</text></text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <view class='flex justify-between'>
+          <view class='text-gray text-df'>{{item.createDate}}</view>
+          <view>
+            <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
+            <text class="text-gray margin-left-xs">{{item.childComment.length}}</text>
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+  <view style="padding:50rpx"></view>
+
+</view>
+
+<!-- 悬浮工具栏点赞、收藏、转发、海报 -->
+<view class="fixed-tools-view show margin-bottom" style="z-index:200;" wx:if="{{post.title}}">
+  <view class="icon-view show" bindtap="postZan">
+    <text class="cuIcon-{{zan.icon}} text-red" />
+  </view>
+  <view class="icon-view show" bindtap="postCollection">
+    <text class="cuIcon-{{collection.icon}} text-red" />
+  </view>
+  <view class="icon-view show">
+    <text class="cuIcon-share text-red" />
+    <button class="share-button" open-type="share"></button>
+  </view>
+  <view class="icon-view show" catchtap="onCreatePoster" wx:if="{{isAdmin}}">
+    <text class="cuIcon-qr_code text-red" />
+  </view>
+</view>
+
+<!-- 底部功能，头像、评论框、按钮 -->
+<view class="comment-fixed" wx:if="{{post.title && isAdmin}}">
+  <view class="cu-bar input">
+    <view class="margin-left-xs avatar" bindtap="showMenuBox">
+      <image src="{{avatarUrl}}" mode="aspectFill"></image>
+    </view>
+    <input class='solid-bottom' maxlength="300" cursor-spacing="10" confirm-type="send" bindinput='commentInput' name="inputComment" value="{{commentContent}}" placeholder="{{placeholder}}" focus="{{focus}}" bindblur="onReplyBlur"></input>
+    <button class='cu-btn bg-blue shadow-blur' bindtap="formSubmit">发送</button>
+  </view>
+</view>
+
+<!-- 数据加载完 -->
+<view wx:if="{{post.title && !isAdmin}}">
+  <view class="cu-load loading text-orange over"></view>
+</view>
+
+<!-- 生成海报组件 -->
+<poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+
+<!-- 展示海报弹窗 -->
+<view class="cu-modal {{isShowPosterModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content'>海报分享</view>
+      <view class='action' bindtap='hideModal'>
+        <text class='cuIcon-close text-red'></text>
+      </view>
+    </view>
+    <view>
+      <image style='height:800rpx;' mode="aspectFit" src="{{posterImageUrl}}" bindtap="posterImageClick"></image>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class='action margin-0 flex-sub text-green solid-left' bindtap='hideModal'>取消</view>
+      <view class='action margin-0 flex-sub  solid-left' bindtap='savePosterImage'>保存本地</view>
+    </view>
+  </view>
+</view>
+
+<!-- 时间戳转换时间 -->
+<wxs module="m1">
+  function format(ts) {
+    if (ts) {
+      var d = getDate(ts)
+      return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('/') + " " + [d.getHours(), d.getMinutes() + 1, d.getSeconds()].join(':')
+    }
+
+  }
+  module.exports.format = format
+</wxs>

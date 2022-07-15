@@ -1,0 +1,108 @@
+<import src="/templates/nodata.wxml" />
+
+<!-- swiper -->
+<view class="padding-bottom-xs padding-lr-lg" style="background: linear-gradient(to bottom, #F6F6F6, #FFFFFF);">
+  <swiper class="screen-swiper square-dot" style="overflow:hidden; border-radius:32rpx;transform: translateY(0);" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{swiperList}}" wx:key="item" id="{{item.postId}}" bindtap="bindPostDetail">
+      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
+    </swiper-item>
+  </swiper>
+</view>
+
+<!-- 搜索栏 -->
+<view class='box'>
+  <form bindsubmit='bindconfirm'>
+    <view class="cu-bar search bg-white">
+      <view class='search-form round'>
+        <text class="cuIcon-search"></text>
+        <input type="text" placeholder="搜索感兴趣的文章" value="{{defaultSearchValue}}" bindconfirm="bindconfirm" name="searchContent" confirm-type="search"></input>
+      </view>
+      <view class="action" wx:if="{{cancel}}" bindtap='onPullDownRefresh'>
+        <text class="text-orange">取消</text>
+      </view>
+    </view>
+  </form>
+  <scroll-view scroll-x class="bg-white nav solid-bottom">
+    <view class="flex text-center">
+      <view wx:for="{{navItems}}" wx:key="idx" wx:for-index="idx" data-data="{{item}}" class="cu-item flex-sub {{item.index==tabCur?'text-orange cur':'text-black'}}" bindtap='tabSelect' data-id="{{item.index}}">
+        {{item.name}}
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view wx:if="{{showHot}}" scroll-x class="bg-white nav solids-bottom">
+    <view class="padding bg-white">
+      <view wx:for="{{hotItems}}" wx:key="idx" wx:for-index="idx" data-data="{{item}}" class="cu-tag round lg {{idx==hotCur?'bg-blue':''}}" bindtap='hotSelect' data-id="{{idx}}">
+        {{item}}
+      </view>
+    </view>
+  </scroll-view>
+  <scroll-view wx:if="{{showLabels}}" scroll-x class="bg-white nav solids-bottom">
+    <view class="padding bg-white">
+      <view class="cu-tag round lg {{'全部'==labelCur?'bg-blue':''}}" data-id="全部" bindtap='labelSelect'>全部</view>
+      <view wx:for="{{labelList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" class="cu-tag round lg {{item.value==labelCur?'bg-blue':''}}" bindtap='labelSelect' data-id="{{item.value}}">
+        {{item.value}}
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 文章列表 -->
+<view class="margin-top-xs">
+  <view wx:for="{{posts}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item._id}}" bindtap="bindPostDetail">
+    <view class="cu-card article padding-bottom-xs padding-lr-xs">
+      <view class="cu-item shadow bg-white">
+        <view class="flex">
+          <view class="title text-cut" style="max-width:580rpx">{{item.title}}</view>
+          <view class="margin-tb-sm cu-tag bg-mauve light sm round">{{item.classify}}</view>
+        </view>
+        <view class="content">
+          <image src="{{item.defaultImageUrl}}" mode="aspectFill"></image>
+          <view class="desc">
+            <view class="text-content text-black">{{item.abstract}}</view>
+            <view class="flex text-gray text-sm">
+              <view class='flex-sub text-left padding-left-xxs' wx:if="{{item._createTime}}">
+                <text class="cuIcon-time"></text>
+                {{m1.format(item._createTime)}}
+              </view>
+              <view class='flex-sub text-right padding-right-sm'>
+                <text class="cuIcon-attention" />
+                {{item.totalVisits}}
+                <text class="cuIcon-like padding-left-xs" />
+                {{item.totalZans}}
+                <text class="cuIcon-message padding-left-xs" />
+                {{item.totalComments}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 加载中 -->
+<view wx:if="{{loading}}">
+  <view class="cu-load loading text-orange"></view>
+</view>
+
+<!-- 数据不存在 -->
+<view wx:if="{{nodata}}">
+  <template is="nodata" />
+</view>
+
+<!-- 数据加载完 -->
+<view wx:if="{{nomore && !nodata}}">
+  <view class="cu-load loading text-orange over"></view>
+</view>
+
+<!-- 时间戳转换为日期 -->
+<wxs module="m1">
+  function format(ts) {
+    if (ts) {
+      var d = getDate(ts)
+      return [d.getFullYear(), d.getMonth() + 1, d.getDate()].join('/')
+    }
+  }
+  module.exports.format = format
+</wxs>

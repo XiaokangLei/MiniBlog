@@ -1,0 +1,31 @@
+/**app.wxss**/
+@import "/colorui/icon.wxss";
+@import "/colorui/colorui.wxss";
+@import "/colorui/editor.wxss";
+@import "/colorui/editorIcon.wxss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.nodata {
+  font-size: 30rpx;
+  line-height: 1.2;
+  font-weight: normal;
+  text-align: center;
+  color: #999;
+  margin-top: 200rpx;
+  margin-bottom: 200rpx;
+}
+
+.nodata .icon {
+  height: 156rpx;
+  background: url("https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/nodata.png") no-repeat center/194rpx auto;
+}
+
+.nodata .txt {
+  padding-top: 60rpx;
+}

@@ -1,0 +1,24 @@
+<import src="/templates/nodata.wxml" />
+
+<view wx:if="{{loading}}">
+  <view class="cu-load loading text-orange"></view>
+</view>
+
+<view class="cu-timeline">
+  <view wx:for="{{logs}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item._id}}" class="cu-item cur cuIcon-noticefill text-orange">
+    <view class="margin-tb-sm text-blue">版本号：{{item.content.releaseName}}</view>
+    <view class="content">
+      <view class="" wx:for="{{item.content.releaseContent}}" wx:key="id" wx:for-index="id" wx:for-item="childItem">
+        {{childItem}}
+      </view>
+      <view class="text-right">
+        <view class="line-blue">{{item.content.releaseDate}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 数据不存在 -->
+<view wx:if="{{nodata}}">
+  <template is="nodata" />
+</view>

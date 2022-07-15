@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Loading...",
+  "usingComponents": {
+    "towxml": "/towxml/towxml",
+    "poster": "/components/test/poster"
+  }
+}

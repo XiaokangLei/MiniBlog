@@ -1,0 +1,57 @@
+
+/* 日历主要颜色相关样式 */
+
+.default_handle-color,
+.default_color{
+  color: #222222;
+}
+.default_weekend-color{
+  color: #F37B1D;
+}
+
+.default_week-color {
+    color: #333333;
+}
+
+.default_today {
+    color: #fff;
+    background-color: #B745CB;
+}
+
+.default_choosed {
+    color: #fff;
+    background-color: #F37B1D;
+}
+
+.default_date-disable {
+    color: #c7c7c7;
+}
+
+.default_prev-month-date,
+.default_next-month-date {
+    color: #e2e2e2;
+}
+
+.default_normal-date {
+    color: #0081FF;
+}
+
+.default_todo-circle {
+    border-color: #0081FF;
+}
+
+.default_todo-dot {
+    background-color: #e54d42;
+}
+
+.default_date-desc {
+    color: #555555;
+}
+
+.default_date-desc-lunar {
+    color: #e54d42;
+}
+
+.default_date-desc-disable {
+    color: #e2e2e2;
+}

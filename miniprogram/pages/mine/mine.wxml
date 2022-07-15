@@ -1,0 +1,132 @@
+<view class="bg-white">
+  <view class="flex padding-sm align-center">
+    <view class="margin-left-xs avatar" bindtap="bindAvatar">
+      <image src="{{avatarUrl}}" mode="aspectFill"></image>
+    </view>
+    <view class="padding-sm margin-xs radius">
+      <view class="flex align-start">
+        <text class="text-xl text-black">{{nickName}}</text>
+        <text class="{{vipDesc == 'VIP用户' ? 'text-orange' : 'text-grey'}} cuIcon-vip" bindtap="clickVip"></text>
+      </view>
+      <view class="margin-top-sm">
+        <text class="line-orange radius text-lg">{{totalPoints}}</text><text class="text-xs text-black"> 积分</text>
+      </view>
+    </view>
+    <view class="flex-sub text-right text-xl margin-right-xs text-grey">
+      <view class="cuIcon-right" bindtap="bindAvatar"></view>
+    </view>
+  </view>
+
+  <view class="cu-list-special">
+    <view class="bg-gradual-orange signbanner shadow-blur">
+      <view class="flex solid-bottom justify-between align-center">
+        <view class="padding-sm radius">
+          已连续签到:
+          <text class="text-sl">{{signedDays}}</text>
+          天
+        </view>
+        <view class="padding-sm radius margin-right-sm">
+          <button class="text-df cu-btn round bg-white text-black" bindtap="btnSigned">{{signBtnTxt}}</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cu-list grid col-4 no-border text-black">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key="idx" bindtap="{{item.bindtap}}">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+        <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+          <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+        </view>
+      </view>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="cu-list menu margin-top-sm shadow-lg sm-border">
+
+  <view class="cu-item arrow" bindtap="bindNotice">
+    <view class='content'>
+      <text class='cuIcon-brand text-pink text-xl'></text>
+      <text class="text-l">资源下载</text>
+    </view>
+    <view class="action">
+      <text class="text-red cuIcon-hotfill"></text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" bindtap="">
+    <view class='content'>
+      <text class='cuIcon-rank text-purple text-xl'></text>
+      <text class="text-l">排行榜</text>
+    </view>
+  </view>
+
+
+  <view class="cu-item arrow" bindtap="showQrcode" wx:if="{{showZanShang}}">
+    <view class='content'>
+      <text class='cuIcon-refund text-red text-xl'></text>
+      <text class="text-l">打赏支持</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" bindtap='showRelease'>
+    <view class='content' hover-class='none'>
+      <text class='cuIcon-form text-blue text-xl'></text>
+      <text class='text-l'>历史版本</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow" data-value="" bindtap="bgCopy">
+    <view class='content'>
+      <text class='cuIcon-notice text-red text-xl'></text>
+      <text class="text-l">GitHub开源</text>
+    </view>
+  </view>
+</view>
+
+<view class="cu-list menu margin-top-sm shadow-lg">
+  <view class="cu-item">
+    <button class='cu-btn content' open-type='contact'>
+      <text class='cuIcon-service text-orange text-xl'></text>
+      <text class='text-l'>联系作者</text>
+    </button>
+  </view>
+  <view class="cu-item">
+    <button class='cu-btn content' open-type='feedback'>
+      <text class='cuIcon-write text-cyan text-xl'></text>
+      <text class='text-l'>意见反馈</text>
+    </button>
+  </view>
+  <view wx:if="{{isAuthor}}" class="cu-item arrow margin-top-sm" bindtap="showAdmin">
+    <view class='content'>
+      <text class='cuIcon-settings text-gary text-xl'></text>
+      <text class='text-l'>后台管理</text>
+    </view>
+  </view>
+</view>
+
+<!-- vip窗口 -->
+<view class="cu-modal {{showVIPModal?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">成为VIP说明</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl bg-white">
+      <view>申请条件：打赏过作者的用户即可申请</view>
+      <view>VIP权益：拥有VIP专属标签</view>
+    </view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub " bindtap="hideModal">取消</view>
+      <view class="action margin-0 flex-sub text-green solid-left" bindtap="showMoneryUrl">
+        打赏
+      </view>
+      <view class="action margin-0 flex-sub text-green solid-left" bindtap="applyVip">
+        申请
+      </view>
+    </view>
+  </view>
+</view>

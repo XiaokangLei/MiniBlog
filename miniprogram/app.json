@@ -1,0 +1,59 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/topic/topic",
+    "pages/topic/topiclist/topiclist",
+    "pages/mine/mine",
+    "pages/mine/collection/collection",
+    "pages/mine/notice/notice",
+    "pages/mine/release/release",
+    "pages/mine/sign/sign",
+    "pages/mine/point/point",
+    "pages/mine/point/pointDetail",
+    "pages/detail/detail",
+    "pages/admin/index",
+    "pages/admin/articleList/articleList",
+    "pages/admin/labelList/labelList",
+    "pages/admin/comment/comment",
+    "pages/admin/classify/classify",
+    "pages/admin/advert/advert",
+    "pages/admin/member/member",
+    "pages/mine/avatar/avatar",
+    "pages/mine/resource/resource",
+    "pages/admin/isShow/isshow"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "九月Online",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#959394",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/tab/index.png",
+        "selectedIconPath": "/images/tab/index_clicked.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/topic/topic",
+        "iconPath": "/images/tab/function.png",
+        "selectedIconPath": "/images/tab/function_clicked.png",
+        "text": "专题"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "/images/tab/mine.png",
+        "selectedIconPath": "/images/tab/mine_clicked.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

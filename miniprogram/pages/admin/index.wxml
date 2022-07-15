@@ -1,0 +1,120 @@
+<!-- 设置列表 -->
+<view class="cu-bar bg-white solid-bottom">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange '></text>
+    <text class="text-xl text-black">全局配置</text>
+  </view>
+</view>
+
+<view class="cu-list menu shadow-lg">
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showMember'>
+      <text class='cuIcon-vip text-orange text-xl'></text>
+      <text class='text-l'>会员管理</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showReleaseModal'>
+      <text class='cuIcon-form text-green text-xl'></text>
+      <text class='text-l'>版本发布</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showAdvert'>
+      <text class='cuIcon-link text-pink text-xl'></text>
+      <text class='text-l'>广告位管理</text>
+    </view>
+  </view>
+
+  <view class="cu-item arrow">
+    <view class='content' bindtap='isShow'>
+      <text class='cuIcon-list text-blue text-xl'></text>
+      <text class='text-l'>显示管理</text>
+    </view>
+  </view>
+</view>
+
+<view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange'></text>
+    <text class="text-xl text-black">文章管理</text>
+  </view>
+</view>
+
+<view class="cu-list menu shadow-lg">
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showComment'>
+      <text class='cuIcon-comment text-cyan text-xl'></text>
+      <text class='text-l'>评论管理</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showArticle'>
+      <text class='cuIcon-post text-red text-xl'></text>
+      <text class='text-l'>文章管理</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showClassify'>
+      <text class='cuIcon-form text-purple text-xl'></text>
+      <text class='text-l'>专题管理</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showLabel'>
+      <text class='cuIcon-tag text-grey text-xl'></text>
+      <text class='text-l'>标签管理</text>
+    </view>
+  </view>
+</view>
+
+<!-- <view class="cu-bar bg-white solid-bottom margin-top">
+  <view class='action'>
+    <text class='cuIcon-titles text-orange'></text>
+    <text class="text-xl text-black">其他</text>
+  </view>
+</view>
+
+<view class="cu-list menu shadow-lg">
+  <view class="cu-item arrow">
+    <view class='content' bindtap='showLabel'>
+      <text class='cuIcon-tagfill text-blue text-xl'></text>
+      <text class='text-l'>展示管理</text>
+    </view>
+  </view>
+</view> -->
+
+<!-- 版本发布窗口 -->
+<view class="cu-modal {{isReleaseShow?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class='content'>版本发布</view>
+      <view class='action' bindtap='hideReleaseModal'>
+        <text class='cuIcon-close text-red'></text>
+      </view>
+    </view>
+    <form bindsubmit="formRelaeaseSubmit" report-submit="true">
+      <view class='padding-sm'>
+        <view class="cu-form-group text-left">
+          <view class='title'>版本:</view>
+          <input placeholder="请填写版本" class='radius' name='releaseName' value='{{release.releaseName}}'></input>
+        </view>
+        <view class="cu-form-group text-left">
+          <view class='title'>日期:</view>
+          <input placeholder="请填写日期" class='radius' name='releaseDate' value='{{release.releaseDate}}'></input>
+        </view>
+        <view wx:if="{{isReleaseShow}}" class="cu-form-group text-left">
+          <textarea placeholder="请输入迭代内容" maxlength="-1" name='releaseContent' value='{{release.releaseContent}}' placeholder-class='placeholder'></textarea>
+        </view>
+      </view>
+      <view class="cu-bar bg-white justify-end">
+        <view class='action'>
+          <button class='cu-btn' bindtap='hideReleaseModal'>取消</button>
+          <button form-type="submit" class='cu-btn margin-left bg-green'>保存</button>
+        </view>
+      </view>
+    </form>
+  </view>
+</view>
