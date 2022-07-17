@@ -177,36 +177,40 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: async function () {
-    wx.showLoading({
-      title: '加载评论...',
-    })
-    try {
-      let that = this;
-      if (that.data.nomore === true)
-        return;
+    let that = this;
+    if (that.data.isPost) {
+      wx.showLoading({
+        title: '加载评论...',
+      })
+      try {
 
-      let page = that.data.commentPage;
-      let commentList = await api.getPostComments(page, that.data.post._id)
-      if (commentList.data.length === 0) {
-        that.setData({
-          nomore: true
-        })
-        if (page === 1) {
+        if (that.data.nomore === true)
+          return;
+
+        let page = that.data.commentPage;
+        let commentList = await api.getPostComments(page, that.data.post._id)
+        if (commentList.data.length === 0) {
           that.setData({
-            nodata: true
+            nomore: true
+          })
+          if (page === 1) {
+            that.setData({
+              nodata: true
+            })
+          }
+        } else {
+          that.setData({
+            commentPage: page + 1,
+            commentList: that.data.commentList.concat(commentList.data),
           })
         }
-      } else {
-        that.setData({
-          commentPage: page + 1,
-          commentList: that.data.commentList.concat(commentList.data),
-        })
+      } catch (err) {
+        console.info(err)
+      } finally {
+        wx.hideLoading()
       }
-    } catch (err) {
-      console.info(err)
-    } finally {
-      wx.hideLoading()
     }
+
 
   },
 

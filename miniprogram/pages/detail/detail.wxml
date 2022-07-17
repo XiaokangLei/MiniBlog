@@ -107,7 +107,7 @@
           <view class="flex" wx:for="{{item.childComment}}" wx:key="id" wx:for-index="id" wx:for-item="childItem">
             <view data-id="{{item._id}}" data-name="{{childItem.cNickName}}" data-openid="{{childItem._openid}}" bindtap="focusComment">
               <view class="{{childItem.isVip ? 'text-orange' : 'text-grey'}}">{{childItem.cNickName}}
-                <text wx:if="{{childItem.isVip}}" class="cuIcon-vip"><text class="text-grey">：{{childItem.comment}}</text></text>
+                <text class="{{childItem.isVip ? 'cuIcon-vip' : ''}}"><text class="text-grey">：{{childItem.comment}}</text></text>
               </view>
             </view>
           </view>

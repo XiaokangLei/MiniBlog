@@ -19,7 +19,7 @@
         <text class="text-cut">{{item.comment}}</text>
       </view>
     </view>
-    <view class="action">
+    <view class="action" style="width: 120rpx;">
       <view class="text-grey text-xs">{{item.createDate}}</view>
       <view class="cu-tag round bg-grey sm">{{item.childComment.length}}</view>
     </view>

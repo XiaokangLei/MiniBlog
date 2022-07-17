@@ -14,7 +14,7 @@
 </view>
 <view class="box">
   <view class="cu-bar btn-group foot">
-    <button class="cu-btn bg-green shadow-blur lg" bindtap='showLabelModal'>新增标签</button>
+    <button class="cu-btn bg-blue shadow-blur lg" bindtap='showLabelModal'>新增标签</button>
   </view>
 </view>
 
@@ -37,7 +37,7 @@
       <view class="cu-bar bg-white justify-end">
         <view class='action'>
           <button class='cu-btn' bindtap='hideLabelModal'>取消</button>
-          <button form-type="submit" class='cu-btn margin-left bg-green'>保存</button>
+          <button form-type="submit" class='cu-btn margin-left bg-blue'>保存</button>
         </view>
       </view>
     </form>

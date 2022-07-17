@@ -24,7 +24,7 @@
 <!-- 新增专题 -->
 <view class="box">
   <view class="cu-bar btn-group foot">
-    <button class="cu-btn bg-green shadow-blur lg" bindtap='showClassifyModal'>新增专题</button>
+    <button class="cu-btn bg-blue shadow-blur lg" bindtap='showClassifyModal'>新增专题</button>
   </view>
 </view>
 
