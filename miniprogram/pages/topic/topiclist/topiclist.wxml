@@ -1,7 +1,7 @@
 <import src="/templates/nodata.wxml" />
 
 <!-- 文章列表 -->
-<view wx:for="{{posts}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item._id}}" bindtap="bindPostDetail">
+<view wx:for="{{posts}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item._id}}" data-db="mini_posts" bindtap="bindPostDetail">
   <view class="cu-card article">
     <view class="cu-item shadow">
       <view class="flex">
@@ -14,15 +14,15 @@
           <view class="text-content">{{item.abstract}}</view>
           <view class="flex text-gray text-sm">
             <view class='flex-sub text-left padding-left-xxs' wx:if="{{item._createTime}}">
-              <text class="cuIcon-timefill"></text>
+              <text class="cuIcon-time"></text>
               {{m1.format(item._createTime)}}
             </view>
             <view class='flex-sub text-right padding-right-sm'>
-              <text class="cuIcon-attentionfill" />
+              <text class="cuIcon-attention" />
               {{item.totalVisits}}
-              <text class="cuIcon-likefill padding-left-xs" />
+              <text class="cuIcon-like padding-left-xs" />
               {{item.totalZans}}
-              <text class="cuIcon-messagefill padding-left-xs" />
+              <text class="cuIcon-message padding-left-xs" />
               {{item.totalComments}}
             </view>
           </view>

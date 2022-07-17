@@ -39,7 +39,6 @@ Page({
    * @param {} e 
    */
   formSubmit: async function (e) {
-    console.log('form发生了submit事件，提交数据：', e)
     let that = this
     let advert = that.data.advert
     advert.readMoreStatus = e.detail.value.readMoreStatus

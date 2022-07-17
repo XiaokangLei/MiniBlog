@@ -1,5 +1,5 @@
 <view class="margin-sm">
-  <view class="radius">
+  <view class="radius text-black">
     已连续签到:
     <text class="text-sl text-orange">{{signedDays}}</text>
     天,拥有 <text class="text-sl text-green">{{signedRightCount}}</text> 次补签机会
@@ -7,7 +7,7 @@
   <view class="radius text-grey text-sm">连续签到可以获取更多积分哦</view>
 </view>
 
-<view class="bg-white margin-sm radius-xl">
+<view class="bg-white margin-sm radius-xl margin-top padding-bottom">
   <view class="padding-sm">
     <calendar id="calendar" calendarConfig="{{calendarConfig}}" bind:onTapDay="onTapDay" bind:afterTapDay="afterTapDay" bind:whenChangeMonth="whenChangeMonth" bind:afterCalendarRender="afterCalendarRender"></calendar>
   </view>

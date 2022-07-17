@@ -123,10 +123,10 @@
     animation-iteration-count: 1;
 }
 
-.date-area-mode {
-    width: 90%;
-    border-radius: 16rpx;
-}
+/* .date-area-mode {
+    width: 75%;
+    border-radius: 25%;
+} */
 
 .date-desc {
     width: 150%;

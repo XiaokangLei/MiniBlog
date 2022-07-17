@@ -60,6 +60,17 @@ Page({
     }
   },
 
+  /**
+   * 点击明细
+   */
+  bindDetail: function (e) {
+    let blogId = e.currentTarget.id;
+    let dbName = e.currentTarget.dataset.db;
+    wx.navigateTo({
+      url: '/pages/detail/detail?id=' + blogId + '&dbName=' + dbName
+    })
+  },
+
   bgCopy(e) {
     wx.setClipboardData({
       data: e.currentTarget.dataset.value,

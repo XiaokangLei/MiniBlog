@@ -37,8 +37,11 @@ exports.main = async (event, context) => {
   var nickName = ""
   var admin = false
   if (result.data.length < 1) {
-    avatarUrl = "https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0"
-    nickName = "微信用户"
+    defaultUrl = 'https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/avatar/'
+    allAvatar = ['0001.jpg', '0002.jpg', '0003.jpg', '0004.jpg', '0005.jpg', '0006.jpg', '0007.jpg', '0008.jpg', '0009.jpg', '0010.jpg', '0011.jpg', '0012.jpg', '0013.jpg', '0014.jpg', '0015.jpg', '0016.jpg', '0017.jpg', '0018.jpg', '0019.jpg', '0020.jpg','0021.jpg', '0022.jpg', '0023.jpg', '0024.jpg', '0025.jpg', '0026.jpg', '0027.jpg', '0028.jpg', '0029.jpg', '0030.jpg', '0031.jpg', '0032.jpg', '0033.jpg', '0034.jpg', '0035.jpg', '0036.jpg', '0037.jpg', '0038.jpg', '0039.jpg', '0040.jpg','0041.jpg', '0042.jpg', '0043.jpg', '0044.jpg', '0045.jpg', '0046.jpg', '0047.jpg', '0048.jpg', '0049.jpg', '0050.jpg', '0051.jpg', '0052.jpg', '0053.jpg', '0054.jpg', '0055.jpg', '0056.jpg', '0057.jpg', '0058.jpg', '0059.jpg', '0060.jpg','0061.webp', '0062.webp', '0063.webp', '0064.webp', '0065.webp', '0066.webp', '0067.webp', '0068.webp', '0069.webp', '0070.webp','0071.webp', '0072.webp', '0073.webp', '0074.webp', '0075.webp', '0076.webp', '0077.webp', '0078.webp', '0079.webp', '0080.webp','0081.webp', '0082.webp', '0083.webp', '0084.webp', '0085.webp', '0086.webp', '0087.webp', '0088.webp', '0089.webp', '0090.webp','0091.webp', '0092.webp', '0093.webp', '0094.webp', '0095.webp', '0096.webp', '0097.webp', '0098.webp', '0099.webp', '0100.webp',]
+    var randomName = defaultUrl + allAvatar[Math.floor(Math.random() * 100) + 1]
+    avatarUrl = randomName
+    nickName = "匿名" + (Date.now()).toString().substring(3, 11);
     let date = new Date().toLocaleDateString().split('/').join('-');
     await db.collection('mini_member').add({
       // data 字段表示需新增的 JSON 数据

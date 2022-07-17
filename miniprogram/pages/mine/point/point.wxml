@@ -52,7 +52,7 @@
       <view class="text-sm text-green padding-top-xs">源码、教程等资源</view>
     </view>
     <view class="flex-treble margin-xs text-right">
-      <button class="cu-btn round bg-gradual-green shadow" bindtap="clickSource">立即兑换</button>
+      <button class="cu-btn round bg-gradual-green shadow" bindtap="clickSource">前往兑换</button>
     </view>
   </view>
 

@@ -298,7 +298,7 @@ async function getPostsDetail(event) {
   console.log("event:", event)
   console.info("启动getPostsDetail")
   console.info(event)
-  let post = await db.collection("mini_posts").doc(event.id).get()
+  let post = await db.collection(event.dbName).doc(event.id).get()
   if (post.code) {
     return "";
   }
@@ -309,7 +309,7 @@ async function getPostsDetail(event) {
 
   const tasks = []
   //获取文章时直接浏览量+1
-  let task = db.collection('mini_posts').doc(event.id).update({
+  let task = db.collection(event.dbName).doc(event.id).update({
     data: {
       totalVisits: _.inc(1)
     }

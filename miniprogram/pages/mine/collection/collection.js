@@ -101,8 +101,9 @@ Page({
    */
   bindPostDetail: function (e) {
     let blogId = e.currentTarget.id;
+    let dbName = e.currentTarget.dataset.db;
     wx.navigateTo({
-      url: '/pages/detail/detail?id=' + blogId
+      url: '/pages/detail/detail?id=' + blogId + '&dbName=' + dbName
     })
   },
   /**

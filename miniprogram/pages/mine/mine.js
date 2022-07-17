@@ -53,6 +53,9 @@ Page({
     openId: ""
   },
 
+  /**
+   * 生命周期函数--监听页面显示
+   */
   onShow: async function () {
     await this.getMemberInfo()
   },
@@ -83,6 +86,10 @@ Page({
     })
   },
 
+  /**
+   * copy数据
+   * @param {*} e 
+   */
   bgCopy(e) {
     wx.setClipboardData({
       data: e.currentTarget.dataset.value,
@@ -116,6 +123,10 @@ Page({
     })
   },
 
+  /**
+   * 跳转修改头像和昵称
+   * @param {*} e 
+   */
   bindAvatar: async function (e) {
     var avatarUrl = encodeURIComponent(this.data.avatarUrl)
     wx.navigateTo({
@@ -190,6 +201,16 @@ Page({
   bindPoint: async function (e) {
     wx.navigateTo({
       url: '../mine/point/point'
+    })
+  },
+
+  /**
+   * 关于
+   * @param {} e 
+   */
+  bindAbout: async function (e) {
+    wx.navigateTo({
+      url: '../mine/about/about'
     })
   },
 
@@ -356,9 +377,24 @@ Page({
     }
   },
 
+  /**
+   * 隐藏Modal
+   * @param {} e 
+   */
   hideModal(e) {
     this.setData({
       showVIPModal: false
     })
+  },
+
+  /**
+   * 自定义分享
+   */
+  onShareAppMessage() {
+    return {
+      title: '开源博客小程序',
+      imageUrl: 'https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/share.jpg',
+      path: '/pages/index/index'
+    }
   },
 })

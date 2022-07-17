@@ -9,12 +9,12 @@
 <view class="bg-white" wx:else>
   <view class="cu-card dynamic no-card">
     <view class="cu-item shadow">
-      <view class='margin-tb-sm text-center text-bold text-xl'>{{post.title}}</view>
+      <view class='margin-tb-sm text-center text-bold text-xl text-black'>{{post.title}}</view>
       <view class="text-center margin-bottom-sm">{{m1.format(post._createTime)}}</view>
       <view class="grid col-1 flex-sub padding-lr">
         <view class="bg-img only-img" style="background-image:url({{post.defaultImageUrl}})" />
       </view>
-      <view class='text-gray text-sm text-right padding' wx:if="{{post.title}}">
+      <view class='text-gray text-sm text-right padding' wx:if="{{post.title && isPost}}">
         <text class="cuIcon-attentionfill" />
         {{post.totalVisits}}
         <text class="cuIcon-likefill padding-left-xs" />
@@ -22,22 +22,47 @@
         <text class="cuIcon-messagefill padding-left-xs" />
         {{post.totalComments}}
       </view>
+      <view class='text-gray text-sm text-right padding' wx:if="{{post.title && isResource}}">
+        <text class="cuIcon-attention" />
+        {{post.totalVisits}}
+        <text class="cuIcon-down padding-left-xs" />
+        {{post.download_num}}
+      </view>
     </view>
   </view>
-  <view class="detail-body" style="height:{{hideArticle}}">
+  <view class="detail-body {{isResource ? 'padding-bottom-xl' : ''}}" style="height:{{isPost ? hideArticle : ''}}">
     <towxml nodes="{{post.content}}" />
     <!--<template is="entry" data="{{...post.content}}" />-->
     <!-- <view class="margin-xs padding-sm text-blue" bindtap='showoriginalUrl'>阅读原文</view> -->
     <!-- 阅读更多 -->
-    <view class="detail-read-more" wx:if="{{hideArticle != ''}}">
+    <view class="detail-read-more" wx:if="{{hideArticle != '' && isPost}}">
+      <view class="detail-readmore-mask">
+        <view class="detail-readmore-btn margin-bottom-xs" bindtap="readMore">阅读更多</view>
+      </view>
+    </view>
+    <!-- <view class="detail-read-more" wx:if="{{hideArticle != ''}}">
       <view class="detail-readmore-mask">
         <view class="detail-readmore-btn margin-bottom-xs" bindtap="readMore">观看视频，阅读更多...</view>
       </view>
-    </view>
-    <!-- <view class="padding-xl margin-lr">
-      <button class="cu-btn block bg-blue margin-tb-sm lg">
-        <text class="cuIcon-loading2 iconfont-spin"></text> 源码下载</button>
     </view> -->
+
+  </view>
+
+</view>
+
+<!-- 源码按钮 -->
+<view class='sign-new bg-white' wx:if="{{post.title && isPost && post.resourceId}}">
+  <view class='new-head'>
+    <view wx:if='{{!signed}}' class='sig-qiu sig-qiu-no bg-gradual-pink' id="{{post.resourceId}}" data-db="mini_resource" bindtap='bindDetail'>
+      <label class='ti'>源码</label>
+    </view>
+  </view>
+</view>
+
+<!-- 积分下载按钮 -->
+<view class="comment-fixed" wx:if="{{isResource && post.title}}">
+  <view class="cu-bar flex justify-center" data-points="{{post.points}}" data-title="{{post.title}}" data-id="{{post._id}}" data-baidu="{{post.baidu}}" data-url="{{post.defaultImageUrl}}" bindtap="clickPoint">
+    <button class="cu-btn bg-blue shadow-blur lg" formType="submit">使用 {{post.points}} 积分下载</button>
   </view>
 </view>
 
@@ -49,7 +74,7 @@
 </view>
 
 <!-- 评论列表 -->
-<view class="bg-white margin-top-xs" wx:if="{{post.title && isAdmin}}">
+<view class="bg-white margin-top-xs" wx:if="{{post.title && isAdmin && isPost}}">
 
   <view class="cu-bar bg-white">
     <view class='action'>
@@ -105,7 +130,7 @@
 </view>
 
 <!-- 悬浮工具栏点赞、收藏、转发、海报 -->
-<view class="fixed-tools-view show margin-bottom" style="z-index:200;" wx:if="{{post.title}}">
+<view class="fixed-tools-view show margin-bottom" style="z-index:200;" wx:if="{{post.title && isPost}}">
   <view class="icon-view show" bindtap="postZan">
     <text class="cuIcon-{{zan.icon}} text-red" />
   </view>
@@ -122,7 +147,7 @@
 </view>
 
 <!-- 底部功能，头像、评论框、按钮 -->
-<view class="comment-fixed" wx:if="{{post.title && isAdmin}}">
+<view class="comment-fixed" wx:if="{{post.title && isAdmin && isPost}}">
   <view class="cu-bar input">
     <view class="margin-left-xs avatar" bindtap="showMenuBox">
       <image src="{{avatarUrl}}" mode="aspectFill"></image>
@@ -133,9 +158,9 @@
 </view>
 
 <!-- 数据加载完 -->
-<view wx:if="{{post.title && !isAdmin}}">
+<!-- <view wx:if="{{post.title && !isAdmin}}">
   <view class="cu-load loading text-orange over"></view>
-</view>
+</view> -->
 
 <!-- 生成海报组件 -->
 <poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>

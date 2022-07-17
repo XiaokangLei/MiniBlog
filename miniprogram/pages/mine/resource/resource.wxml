@@ -7,10 +7,10 @@
 
 <view class="cu-list menu-avatar">
 
-  <view class="cu-item cur" wx:for="{{notice}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" data-path="{{item.path}}" bindtap="bindDetail">
-    <view class="cu-avatar radius lg" style="background-image:url({{item.resourceUrl}});">
+  <view class="cu-item cur" wx:for="{{notice}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" data-path="{{item.path}}">
+    <view class="cu-avatar radius lg" style="background-image:url({{item.resourceUrl}});" data-db="mini_resource" id="{{item.resourceId}}" data-db="mini_resource" bindtap="bindDetail">
     </view>
-    <view class="content">
+    <view class="content" data-db="mini_resource" id="{{item.resourceId}}" data-db="mini_resource" bindtap="bindDetail">
       <view>
         <text class="text-cut margin-bottom-xs">{{item.resourceTitle}}</text>
       </view>
@@ -20,7 +20,7 @@
     </view>
     <view class="actionself">
       <view class="text-grey text-xs margin-bottom-sm">{{item.createTime}}</view>
-      <view class="cuIcon-copy text-orange" data-value="{{item.resourceBaidu}}" bindtap="bgCopy"></view>
+      <view class="cuIcon-copy text-orange text-xxl" data-value="{{item.resourceBaidu}}" bindtap="bgCopy"></view>
     </view>
   </view>
 </view>

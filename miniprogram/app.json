@@ -20,7 +20,8 @@
     "pages/admin/member/member",
     "pages/mine/avatar/avatar",
     "pages/mine/resource/resource",
-    "pages/admin/isShow/isshow"
+    "pages/admin/isShow/isshow",
+    "pages/mine/about/about"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

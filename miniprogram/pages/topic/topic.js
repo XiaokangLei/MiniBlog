@@ -58,5 +58,16 @@ Page({
     wx.navigateTo({
       url: '../topic/topiclist/topiclist?classify=' + classify
     })
-  }
+  },
+
+  /**
+   * 自定义分享
+   */
+  onShareAppMessage() {
+    return {
+      title: '开源博客小程序',
+      imageUrl: 'https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/share.jpg',
+      path: '/pages/index/index'
+    }
+  },
 })

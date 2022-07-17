@@ -2008,15 +2008,15 @@ button.icon.lg {
 }
 
 .nav .cu-item {
-  height: 90rpx;
+  height: 84rpx;
   display: inline-block;
-  line-height: 90rpx;
-  margin: 0 10rpx;
+  line-height: 72rpx;
+  margin: 0 36rpx;
   padding: 0 20rpx;
 }
 
 .nav .cu-item.cur {
-  border-bottom: 4rpx solid;
+  border-bottom: 5rpx solid;
 }
 
 /* ==================
@@ -3829,6 +3829,10 @@ scroll-view.cu-steps .cu-item {
 
 .text-xxl {
   font-size: 44rpx;
+}
+
+.text-xxxl {
+  font-size: 64rpx;
 }
 
 .text-sl {

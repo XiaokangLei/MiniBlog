@@ -43,9 +43,10 @@ Page({
    * 消息详情
    */
   bindDetail: function (e) {
-    let path = e.currentTarget.dataset.path;
+    let blogId = e.currentTarget.id;
+    let dbName = e.currentTarget.dataset.db;
     wx.navigateTo({
-      url: path
+      url: '/pages/detail/detail?id=' + blogId + '&dbName=' + dbName
     })
   },
 

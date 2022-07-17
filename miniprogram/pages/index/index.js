@@ -14,13 +14,13 @@ Page({
     nomore: false,
     defaultSearchValue: "",
     navItems: [{
-      name: '最新',
+      name: '最 新',
       index: 1
     }, {
-      name: '热门',
+      name: '热 门',
       index: 2
     }, {
-      name: '标签',
+      name: '标 签',
       index: 3
     }],
     swiperList: [],
@@ -118,9 +118,21 @@ Page({
    */
   bindPostDetail: function (e) {
     let blogId = e.currentTarget.id;
+    let dbName = e.currentTarget.dataset.db;
     wx.navigateTo({
-      url: '../detail/detail?id=' + blogId
+      url: '../detail/detail?id=' + blogId + '&dbName=' + dbName
     })
+  },
+
+  /**
+   * 自定义分享
+   */
+  onShareAppMessage() {
+    return {
+      title: '开源博客小程序',
+      imageUrl: 'https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/share.jpg',
+      path: '/pages/index/index'
+    }
   },
 
   /**

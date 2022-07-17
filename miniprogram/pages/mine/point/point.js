@@ -193,7 +193,6 @@ Page({
         console.log('onLoad event emit')
       })
       rewardedVideoAd.onError((err) => {
-        console.log(err);
         wx.showToast({
           title: "视频广告出现问题啦",
           icon: "none",

@@ -5,7 +5,7 @@
 </view>
 
 <!--文章列表-->
-<view wx:for="{{postRelated}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item.postId}}" bindtap="bindPostDetail">
+<view wx:for="{{postRelated}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item.postId}}" data-db="mini_posts" bindtap="bindPostDetail">
   <view class="cu-card article">
     <view class="cu-item shadow">
       <view class="flex">

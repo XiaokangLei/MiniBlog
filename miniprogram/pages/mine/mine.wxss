@@ -1,5 +1,5 @@
 .signbanner {
-  border-radius: 12rpx;
+  box-shadow: -20rpx 20rpx 30rpx #d9d9d9, 20rpx -20rpx 30rpx #ffffff;
 }
 
 .cu-list-special {

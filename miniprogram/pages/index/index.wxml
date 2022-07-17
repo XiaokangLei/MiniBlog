@@ -3,7 +3,7 @@
 <!-- swiper -->
 <view class="padding-bottom-xs padding-lr-lg" style="background: linear-gradient(to bottom, #F6F6F6, #FFFFFF);">
   <swiper class="screen-swiper square-dot" style="overflow:hidden; border-radius:32rpx;transform: translateY(0);" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
-    <swiper-item wx:for="{{swiperList}}" wx:key="item" id="{{item.postId}}" bindtap="bindPostDetail">
+    <swiper-item wx:for="{{swiperList}}" wx:key="item" id="{{item.postId}}" data-db="mini_posts" bindtap="bindPostDetail">
       <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
       <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
     </swiper-item>
@@ -49,9 +49,9 @@
 
 <!-- 文章列表 -->
 <view class="margin-top-xs">
-  <view wx:for="{{posts}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item._id}}" bindtap="bindPostDetail">
+  <view wx:for="{{posts}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" data-db="mini_posts" id="{{item._id}}" bindtap="bindPostDetail">
     <view class="cu-card article padding-bottom-xs padding-lr-xs">
-      <view class="cu-item shadow bg-white">
+      <view class="cu-item shadow-warp bg-white">
         <view class="flex">
           <view class="title text-cut" style="max-width:580rpx">{{item.title}}</view>
           <view class="margin-tb-sm cu-tag bg-mauve light sm round">{{item.classify}}</view>

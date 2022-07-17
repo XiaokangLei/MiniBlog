@@ -38,10 +38,11 @@ Page({
     posterImageUrl: "", //海报地址
     showBanner: false,
     showBannerId: "",
-    hideArticle: '', //640rpx
+    hideArticle: '640rpx', //640rpx
     isVip: false,
     totalPoints: 0,
-    pointsModal: false
+    pointsModal: false,
+    dbName: '',
   },
 
   /**
@@ -50,6 +51,17 @@ Page({
   onLoad: async function (options) {
     let that = this;
     let blogId = options.id;
+    let dbName = options.dbName;
+    if (dbName == 'mini_posts') {
+      that.setData({
+        isPost: true
+      })
+    }
+    if (dbName == 'mini_resource') {
+      that.setData({
+        isResource: true
+      })
+    }
     if (options.scene) {
       blogId = decodeURIComponent(options.scene);
     }
@@ -65,7 +77,13 @@ Page({
         isAdmin: app.globalData.admin,
         nickName: res.data[0].nickName,
         avatarUrl: res.data[0].avatarUrl,
-        openId: res.data[0]._openid
+        openId: res.data[0]._openid,
+        dbName: options.dbName
+      })
+    }
+    if (!that.data.isAdmin) {
+      that.setData({
+        hideArticle: ''
       })
     }
     //广告加载
@@ -92,8 +110,58 @@ Page({
       })
     }
     //获取文章详情&关联信息
-    await that.getDetail(blogId)
+    await that.getDetail(blogId, dbName)
     await that.getPostRelated(that.data.post._id)
+  },
+
+  /**
+   * 增加兑换
+   */
+  postAdd: async function (resourceId, resourceTitle, resourceBaidu, resourceUrl) {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    try {
+      let that = this;
+      let data = {
+        resourceId: resourceId,
+        resourceTitle: resourceTitle,
+        resourceBaidu: resourceBaidu,
+        resourceUrl: resourceUrl,
+        openId: app.globalData.openid,
+      }
+      await api.addResource(data)
+      wx.hideLoading()
+      wx.showToast({
+        title: '兑换成功',
+        icon: 'success',
+        duration: 1400
+      })
+      await that.showResource()
+    } catch (err) {
+      wx.showToast({
+        title: '程序有一点点小异常，操作失败啦',
+        icon: 'none',
+        duration: 1400
+      })
+      console.info(err)
+      wx.hideLoading()
+    } finally {
+
+    }
+
+  },
+
+  /**
+   * 资源列表
+   * @param {} e 
+   */
+  showResource: async function (e) {
+    setTimeout(function () {
+      wx.navigateTo({
+        url: '../mine/resource/resource'
+      })
+    }, 1500);
   },
 
   /**
@@ -110,7 +178,7 @@ Page({
    */
   onReachBottom: async function () {
     wx.showLoading({
-      title: '加载评论中...',
+      title: '加载评论...',
     })
     try {
       let that = this;
@@ -150,12 +218,79 @@ Page({
   },
 
   /**
+   * resource详情
+   */
+  bindDetail: function (e) {
+    console.log(e)
+    let blogId = e.currentTarget.id;
+    let dbName = e.currentTarget.dataset.db;
+    wx.navigateTo({
+      url: '/pages/detail/detail?id=' + blogId + '&dbName=' + dbName
+    })
+  },
+
+  /**
+   * 积分兑换
+   * @param {*} e 
+   */
+  clickPoint: function (e) {
+    let that = this
+    console.log("e:", e)
+    console.log("that.data:", that.data)
+    if (that.data.totalPoints < e.currentTarget.dataset.points) {
+      wx.showToast({
+        title: "很抱歉，您的积分不够",
+        icon: "none",
+        duration: 4000
+      });
+      return;
+    }
+    wx.showModal({
+      title: '提示',
+      content: '您将花费' + e.currentTarget.dataset.points + '积分兑换【' + e.currentTarget.dataset.title + '】' + '是否确认兑换?',
+      success(res) {
+        if (res.confirm) {
+          // wx.showLoading({
+          //   title: '处理中...',
+          // })
+          let info = {
+            nickName: app.globalData.nickName,
+            avatarUrl: app.globalData.avatarUrl,
+          }
+          api.addPoints('', info, e.currentTarget.dataset.points, '兑换【' + e.currentTarget.dataset.title + '】').then((res) => {
+            if (res.result) {
+              that.setData({
+                totalPoints: Number(that.data.totalPoints) - e.currentTarget.dataset.points
+              })
+              that.postAdd(e.currentTarget.dataset.id, e.currentTarget.dataset.title, e.currentTarget.dataset.baidu, e.currentTarget.dataset.url)
+              // wx.showToast({
+              //   title: "兑换成功",
+              //   icon: "none",
+              //   duration: 3000
+              // });
+            } else {
+              wx.showToast({
+                title: "程序有些小异常",
+                icon: "none",
+                duration: 3000
+              });
+            }
+
+          })
+          // wx.hideLoading()
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+
+  /**
    * 获取文章详情
    */
-  getDetail: async function (blogId) {
+  getDetail: async function (blogId, dbName) {
     let that = this
-    let postDetail = await api.getPostDetail(blogId);
-    console.log("ji:", postDetail)
+    let postDetail = await api.getPostDetail(blogId, dbName);
     let content = app.towxml(postDetail.result.content, 'markdown');
     postDetail.result.content = content
     that.setData({
@@ -404,7 +539,7 @@ Page({
         nodata: false,
         post: post,
         commentId: "",
-        placeholder: "评论...",
+        placeholder: "发表评论...",
         focus: false,
         toName: "",
         toOpenId: ""
@@ -662,7 +797,6 @@ Page({
     wx.saveImageToPhotosAlbum({
       filePath: that.data.posterImageUrl,
       success(result) {
-        console.log(result)
         wx.showModal({
           title: '提示',
           content: '二维码海报已存入手机相册，赶快分享到朋友圈吧',
@@ -758,18 +892,22 @@ Page({
    * 阅读更多
    */
   readMore: function () {
+    let that = this
+    that.setData({
+      hideArticle: ''
+    })
 
-    rewardedVideoAd.show()
-      .catch(() => {
-        rewardedVideoAd.load()
-          .then(() => rewardedVideoAd.show())
-          .catch(err => {
-            console.log('激励视频 广告显示失败');
-            that.setData({
-              hideArticle: ''
-            })
-          })
-      })
+    // rewardedVideoAd.show()
+    //   .catch(() => {
+    //     rewardedVideoAd.load()
+    //       .then(() => rewardedVideoAd.show())
+    //       .catch(err => {
+    //         console.log('激励视频 广告显示失败');
+    //         that.setData({
+    //           hideArticle: ''
+    //         })
+    //       })
+    //   })
   },
 
   /**

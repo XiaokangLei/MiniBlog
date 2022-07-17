@@ -1,4 +1,6 @@
 <view class="bg-white">
+
+  <!-- 个人信息 -->
   <view class="flex padding-sm align-center">
     <view class="margin-left-xs avatar" bindtap="bindAvatar">
       <image src="{{avatarUrl}}" mode="aspectFill"></image>
@@ -17,8 +19,9 @@
     </view>
   </view>
 
-  <view class="cu-list-special">
-    <view class="bg-gradual-orange signbanner shadow-blur">
+  <!-- 签到 -->
+  <view class="cu-list-special margin-top-xs">
+    <view class="bg-gradual-orange signbanner radius-l shadow-blur">
       <view class="flex solid-bottom justify-between align-center">
         <view class="padding-sm radius">
           已连续签到:
@@ -31,9 +34,11 @@
       </view>
     </view>
   </view>
+
+  <!-- 个人中心，收藏、点赞、资源、积分 -->
   <view class="cu-list grid col-4 no-border text-black">
     <view class="cu-item" wx:for="{{iconList}}" wx:key="idx" bindtap="{{item.bindtap}}">
-      <view class="cuIcon-{{item.icon}} text-{{item.color}}">
+      <view class="cuIcon-{{item.icon}} text-{{item.color}} text-shadow">
         <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
           <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
         </view>
@@ -43,26 +48,21 @@
   </view>
 </view>
 
+
 <view class="cu-list menu margin-top-sm shadow-lg sm-border">
 
+  <!-- 源码资源 -->
   <view class="cu-item arrow" bindtap="bindNotice">
     <view class='content'>
       <text class='cuIcon-brand text-pink text-xl'></text>
-      <text class="text-l">资源下载</text>
+      <text class="text-l">源码资源</text>
     </view>
     <view class="action">
       <text class="text-red cuIcon-hotfill"></text>
     </view>
   </view>
 
-  <view class="cu-item arrow" bindtap="">
-    <view class='content'>
-      <text class='cuIcon-rank text-purple text-xl'></text>
-      <text class="text-l">排行榜</text>
-    </view>
-  </view>
-
-
+  <!-- 打赏支持 -->
   <view class="cu-item arrow" bindtap="showQrcode" wx:if="{{showZanShang}}">
     <view class='content'>
       <text class='cuIcon-refund text-red text-xl'></text>
@@ -70,6 +70,7 @@
     </view>
   </view>
 
+  <!-- 历史版本 -->
   <view class="cu-item arrow" bindtap='showRelease'>
     <view class='content' hover-class='none'>
       <text class='cuIcon-form text-blue text-xl'></text>
@@ -77,15 +78,27 @@
     </view>
   </view>
 
-  <view class="cu-item arrow" data-value="" bindtap="bgCopy">
+  <!-- 关于 -->
+  <view class="cu-item arrow" bindtap="bindAbout">
     <view class='content'>
-      <text class='cuIcon-notice text-red text-xl'></text>
-      <text class="text-l">GitHub开源</text>
+      <text class='cuIcon-info text-orange text-xl'></text>
+      <text class="text-l">关于小程序</text>
     </view>
   </view>
 </view>
 
 <view class="cu-list menu margin-top-sm shadow-lg">
+  <!-- 开源 -->
+  <view class="cu-item" data-value="https://github.com/XiaokangLei/MiniBlog.git" bindtap="bgCopy">
+    <view class='content'>
+      <text class='cuIcon-github text-mauve text-xl'></text>
+      <text class="text-l">GitHub开源</text>
+    </view>
+    <view class="action">
+      <text class="text-blue cuIcon-copy"></text>
+    </view>
+  </view>
+  <!-- 联系作者 -->
   <view class="cu-item">
     <button class='cu-btn content' open-type='contact'>
       <text class='cuIcon-service text-orange text-xl'></text>

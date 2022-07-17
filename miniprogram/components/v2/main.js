@@ -862,9 +862,9 @@ function init(component, config) {
   Component.config = config
   setWeekHeader(config.firstDayOfWeek)
   autoSelectDay(config.defaultDay)
-  logger.tips(
-    '使用中若遇问题请反馈至 https://github.com/treadpit/wx_calendar/issues ✍️'
-  )
+  // logger.tips(
+  //   '使用中若遇问题请反馈至 https://github.com/treadpit/wx_calendar/issues ✍️'
+  // )
 }
 
 export default (component, config = {}) => {

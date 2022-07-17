@@ -23,7 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(decodeURIComponent(options.avatarUrl))
     this.setData({
       avatarUrl: decodeURIComponent(options.avatarUrl),
       nickName: options.nickName,
@@ -44,10 +43,12 @@ Page({
    * 提交修改内容
    */
   formSubmit(e) {
-    this.setData({
-      nickName: e.detail.value.input
-    })
     var that = this;
+    if (e.detail.value.input != '') {
+      that.setData({
+        nickName: e.detail.value.input
+      })
+    }
     wx.cloud.uploadFile({
       // 文件名
       cloudPath: that.data.openId + '.png',
