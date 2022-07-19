@@ -121,7 +121,7 @@ function getReleaseLogsList(page) {
     .where({
       key: 'releaseLogKey'
     })
-    .orderBy('timestamp', 'desc')
+    .orderBy('_createTime', 'desc')
     .skip((page - 1) * 10)
     .limit(10)
     .get()

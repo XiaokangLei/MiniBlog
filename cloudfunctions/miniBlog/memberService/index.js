@@ -191,7 +191,7 @@ async function addSign(event) {
         data: {
           templateId: event.info.templateId,
           openId: event.info.openId,
-          timestamp: new Date().getTime()
+          _createTime: new Date().getTime()
         }
       });
       tasks.push(task4)
@@ -396,7 +396,7 @@ async function applyVip(event) {
         data: {
           templateId: event.info.templateId,
           openId: wxContext.OPENID,
-          timestamp: new Date().getTime()
+          _createTime: new Date().getTime()
         }
       });
     }

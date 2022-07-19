@@ -248,13 +248,13 @@ Page({
     }
 
     for (var index in labelList.result.data) {
-      let labelRes = otherLabels.filter((a) => labelList.result.data[index].value == a.name)
+      let labelRes = otherLabels.filter((a) => labelList.result.data[index].value['label'] == a.name)
       if (labelRes.length > 0) {
         continue;
       }
 
       otherLabels.push({
-        name: labelList.result.data[index].value,
+        name: labelList.result.data[index].value['label'],
         checked: false
       })
     }

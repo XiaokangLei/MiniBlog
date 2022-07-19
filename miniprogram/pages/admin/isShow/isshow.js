@@ -25,7 +25,7 @@ Page({
       })
       let result = await api.getAdmin()
       this.setData({
-        isShow: result.data[0].isShow
+        isShow: result.data[0].value['isShow']
       })
     } catch (err) {
       console.info(err)

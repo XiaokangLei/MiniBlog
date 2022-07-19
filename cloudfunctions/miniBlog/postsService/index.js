@@ -128,7 +128,7 @@ async function addPostComment(event) {
       data: {
         templateId: COMMENT_TEMPLATE_ID,
         openId: event.commentContent._openid,
-        timestamp: new Date().getTime()
+        _createTime: new Date().getTime()
       }
     });
   }
@@ -162,7 +162,7 @@ async function addPostChildComment(event) {
       data: {
         templateId: COMMENT_TEMPLATE_ID,
         openId: event.comments[0]._openid,
-        timestamp: new Date().getTime()
+        _createTime: new Date().getTime()
       }
     });
   }

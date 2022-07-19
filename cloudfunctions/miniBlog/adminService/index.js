@@ -77,7 +77,7 @@ exports.main = async (event, context) => {
     case 'approveApplyVip': {
       return approveApplyVip(event)
     }
-    case 'upsertShowConfig':{
+    case 'upsertShowConfig': {
       return upsertShowConfig(event)
     }
     default:
@@ -114,8 +114,8 @@ async function addReleaseLog(event) {
       icon: 'formfill',
       color: 'blue',
       path: '../release/release',
-      timestamp: Date.now(),
-      datetime: new Date(Date.now() + (8 * 60 * 60 * 1000)).toFormat("YYYY-MM-DD HH24:MI"),
+      _createTime: Date.now(),
+      datetime: new Date(Date.now()).toFormat("YYYY-MM-DD HH24:MI"),
       openId: '', //为空则为所有用户
       type: 'system'
     }
@@ -214,9 +214,12 @@ async function upsertPosts(event) {
 async function addBaseLabel(event) {
   let key = "basePostsLabels"
   let collection = "mini_config"
+  let labelValue = {
+    'label': event.labelName
+  }
   let result = await db.collection(collection).where({
     key: key,
-    value: event.labelName
+    value: labelValue
   }).get()
   if (result.data.length > 0) {
     return false
@@ -224,8 +227,8 @@ async function addBaseLabel(event) {
     await db.collection(collection).add({
       data: {
         key: key,
-        timestamp: Date.now(),
-        value: event.labelName
+        _createTime: Date.now(),
+        value: labelValue
       }
     });
     return true;
@@ -259,7 +262,7 @@ async function upsertAdvertConfig(event) {
   if (result.data.length > 0) {
     await db.collection(collection).doc(result.data[0]._id).update({
       data: {
-        timestamp: Date.now(),
+        _updateTime: Date.now(),
         value: event.advert
       }
     });
@@ -268,7 +271,7 @@ async function upsertAdvertConfig(event) {
     await db.collection(collection).add({
       data: {
         key: key,
-        timestamp: Date.now(),
+        _createTime: Date.now(),
         value: event.advert
       }
     });
@@ -283,14 +286,17 @@ async function upsertAdvertConfig(event) {
 async function upsertShowConfig(event) {
   let key = "admin"
   let collection = "mini_config"
+  let isShowList = {
+    "isShow": event.isShow
+  }
   let result = await db.collection(collection).where({
     key: key
   }).get()
   if (result.data.length > 0) {
     await db.collection(collection).doc(result.data[0]._id).update({
       data: {
-        timestamp: Date.now(),
-        isShow: event.isShow
+        _updateTime: Date.now(),
+        value: isShowList
       }
     });
     return true
@@ -298,8 +304,8 @@ async function upsertShowConfig(event) {
     await db.collection(collection).add({
       data: {
         key: key,
-        timestamp: Date.now(),
-        isShow: event.isShow
+        _createTime: Date.now(),
+        value: isShowList
       }
     });
     return true;
@@ -327,7 +333,7 @@ async function addBaseClassify(event) {
     await db.collection(collection).add({
       data: {
         key: key,
-        timestamp: Date.now(),
+        _createTime: Date.now(),
         value: classifyData
       }
     });
@@ -474,7 +480,7 @@ async function updateBatchPostsLabel(event) {
       })
     } else if (event.operate == 'delete') {
 
-      var index = oldLabels.indexOf(event);
+      var index = oldLabels.indexOf(event.label);
       if (index == -1) {
         continue
       }

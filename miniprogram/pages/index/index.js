@@ -208,6 +208,7 @@ Page({
 
         let task = that.getPostsList("", '_createTime')
         let labelList = await api.getLabelList()
+        console.log("labelList:", labelList.result.data)
         that.setData({
           labelList: labelList.result.data
         })

@@ -38,7 +38,7 @@ Page({
     posterImageUrl: "", //海报地址
     showBanner: false,
     showBannerId: "",
-    hideArticle: '640rpx', //640rpx
+    hideArticle: '750rpx', //640rpx
     isVip: false,
     totalPoints: 0,
     pointsModal: false,
@@ -498,7 +498,7 @@ Page({
         cNickName: that.data.nickName,
         cAvatarUrl: that.data.avatarUrl,
         _openid: app.globalData.openid,
-        timestamp: new Date().getTime(),
+        _createTime: new Date().getTime(),
         createDate: util.formatTime(new Date()),
         comment: content,
         childComment: [],
@@ -511,7 +511,7 @@ Page({
         _openid: app.globalData.openid,
         cNickName: that.data.nickName,
         cAvatarUrl: that.data.avatarUrl,
-        timestamp: new Date().getTime(), //new Date(),
+        _createTime: new Date().getTime(), //new Date(),
         createDate: util.formatTime(new Date()),
         comment: content,
         tNickName: that.data.toName,

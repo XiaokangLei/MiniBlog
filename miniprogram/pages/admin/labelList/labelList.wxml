@@ -8,8 +8,8 @@
 
 <!-- 显示已有标签 -->
 <view class="padding-sm flex flex-wrap">
-  <view class="padding-xs" wx:for="{{labelList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-labelname="{{item.value}}" id="{{item._id}}" bindtap="showLabelRelatedModal" bindlongpress='deleteLabelById'>
-    <view class="cu-tag line-orange">{{item.value}}</view>
+  <view class="padding-xs" wx:for="{{labelList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-labelname="{{item.value['label']}}" id="{{item._id}}" bindtap="showLabelRelatedModal" bindlongpress='deleteLabelById'>
+    <view class="cu-tag line-orange">{{item.value['label']}}</view>
   </view>
 </view>
 <view class="box">
