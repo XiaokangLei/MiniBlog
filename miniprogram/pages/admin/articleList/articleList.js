@@ -236,7 +236,7 @@ Page({
     let that = this
     let postId = e.currentTarget.dataset.postid
     let label = e.currentTarget.dataset.label
-    let labelList = await api.getLabelList(app.globalData.openid)
+    let labelList = await api.getLabelList(app.globalData.openid, 0)
     let otherLabels = []
     if (label.length > 0) {
       for (var i = 0; i < label.length; i++) {
@@ -470,7 +470,6 @@ Page({
       let that = this;
       let updateShow = that.data.showCurStatus == 0 ? 1 : 0
       let res = await api.updatePostsShowStatus(that.data.showCurPostId, updateShow, app.globalData.openid)
-      console.info(res)
       if (res.result) {
         that.setData({
           isShowModel: false,

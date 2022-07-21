@@ -42,7 +42,6 @@ Page({
    */
   tabSelect: async function (e) {
     let that = this;
-    console.log(e);
     that.setData({
       tabCur: e.currentTarget.dataset.id,
       scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
@@ -123,7 +122,6 @@ Page({
    * @param {} e 
    */
   showCommentModal(e) {
-    console.info(e)
     let curId = e.currentTarget.id
     let curFlag = e.currentTarget.dataset.flag
     let curComment = e.currentTarget.dataset.comment
@@ -176,11 +174,7 @@ Page({
       let memberId = e.currentTarget.id
       let status = e.currentTarget.dataset.status
       let openId = e.currentTarget.dataset.openid
-      console.info(memberId)
-      console.info(status)
-      console.log(that.data.members)
       let res = await api.approveApplyVip(memberId, status, openId)
-      console.info(res)
       if (res.result) {
         wx.showToast({
           title: '设置成功',

@@ -34,7 +34,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: async function (options) {
-    await this.getLabelList(app.globalData.openid, 0)
+    await this.getLabelList(app.globalData.openid, 1)
   },
 
   /**
@@ -48,14 +48,14 @@ Page({
     if (tabCur === 1) {
       filter = {
         isShow: 1,
-        containLabel: 2,
-        label: that.data.curLabelName
+        containKind: 2,
+        kind: that.data.curLabelName
       }
     } else {
       filter = {
         isShow: 1,
-        containLabel: 1,
-        label: that.data.curLabelName
+        containKind: 1,
+        kind: that.data.curLabelName
       }
     }
 
@@ -81,7 +81,7 @@ Page({
     that.setData({
       labelList: []
     })
-    await this.getLabelList(app.globalData.openid, 0)
+    await this.getLabelList(app.globalData.openid, 1)
     wx.stopPullDownRefresh();
   },
 
@@ -98,7 +98,7 @@ Page({
    */
   getLabelList: async function () {
     let that = this
-    let labelList = await api.getLabelList(app.globalData.openid, 0)
+    let labelList = await api.getLabelList(app.globalData.openid, 1)
     that.setData({
       labelList: labelList.result.data
     })
@@ -119,8 +119,8 @@ Page({
     let curLabelName = e.currentTarget.dataset.labelname
     let filter = {
       isShow: 1,
-      containLabel: 2,
-      label: curLabelName
+      containKind: 2,
+      kind: curLabelName
     }
 
     that.setData({
@@ -164,7 +164,7 @@ Page({
   },
 
   /**
-   * 保存标签
+   * 保存类别
    * @param {*} e 
    */
   formLabelSubmit: async function (e) {
@@ -172,7 +172,7 @@ Page({
     let labelName = e.detail.value.labelName;
     if (labelName === undefined || labelName === "") {
       wx.showToast({
-        title: '请填写正确的标签',
+        title: '请填写正确的类别',
         icon: 'none',
         duration: 1500
       })
@@ -181,7 +181,7 @@ Page({
         title: '保存中...',
       })
 
-      let res = await api.addBaseLabel(labelName, app.globalData.openid, 0)
+      let res = await api.addBaseLabel(labelName, app.globalData.openid, 1)
       wx.hideLoading()
       if (res.result) {
         that.setData({
@@ -207,7 +207,7 @@ Page({
   },
 
   /**
-   * 删除标签
+   * 删除类别
    * @param {*} e 
    */
   deleteLabelById: async function (e) {
@@ -216,7 +216,7 @@ Page({
     let that = this
     wx.showModal({
       title: '提示',
-      content: '是否确认删除[' + labelName + ']标签',
+      content: '是否确认删除[' + labelName + ']类别',
       success(res) {
         if (res.confirm) {
           api.deleteConfigById(labelId, app.globalData.openid).then(res => {
@@ -304,7 +304,7 @@ Page({
       title: '处理中...',
     })
     try {
-      let res = await api.updateBatchPostsLabel(that.data.curLabelName, that.data.tabCur == 1 ? "add" : "delete", posts, app.globalData.openid, 0)
+      let res = await api.updateBatchPostsLabel(that.data.curLabelName, that.data.tabCur == 1 ? "add" : "delete", posts, app.globalData.openid, 1)
       if (res.result) {
         wx.showToast({
           title: '处理成功',

@@ -207,8 +207,7 @@ Page({
         })
 
         let task = that.getPostsList("", '_createTime')
-        let labelList = await api.getLabelList()
-        console.log("labelList:", labelList.result.data)
+        let labelList = await api.getLabelList(app.globalData.openid, 1)
         that.setData({
           labelList: labelList.result.data
         })

@@ -175,6 +175,19 @@ function getNewPostsList(page, filter, orderBy) {
     })
   }
 
+  //不包含某个类别
+  if (filter.containKind == 2) {
+    where.kind = _.nin([filter.kind])
+  }
+
+  //包含某个类别
+  if (filter.containKind == 1) {
+    where.kind = db.RegExp({
+      regexp: filter.kind,
+      options: 'i',
+    })
+  }
+
   //不包含某个主题
   if (filter.containClassify == 2) {
     where.classify = _.neq(filter.classify)
@@ -207,6 +220,23 @@ function getNewPostsList(page, filter, orderBy) {
       abstract: true,
       _createTime: true
     }).get()
+}
+
+function getNewPostsKind(classify) {
+  
+  return db.collection('mini_config')
+    .where({
+      'value.classifyName': classify
+      })
+    .get()
+}
+function getNewPostsLable(kind) {
+  
+  return db.collection('mini_config')
+    .where({
+      'value.kind': kind
+      })
+    .get()
 }
 
 /**
@@ -576,13 +606,14 @@ function upsertPosts(id, data, openId) {
 /**
  * 新增基础标签
  */
-function addBaseLabel(labelName, openId) {
+function addBaseLabel(labelName, openId, kind) {
   return wx.cloud.callFunction({
     name: 'miniBlog',
     data: {
       type: 'adminService',
       action: "addBaseLabel",
       labelName: labelName,
+      kind: kind,
       openId: openId
     }
   })
@@ -657,12 +688,14 @@ function changeCommentFlagById(id, flag, postId, count, openId) {
 /**
  * 获取label集合
  */
-function getLabelList(openId) {
+function getLabelList(openId, kind) {
+
   return wx.cloud.callFunction({
     name: 'miniBlog',
     data: {
       type: 'adminService',
       action: "getLabelList",
+      kind: kind,
       openId: openId
     }
   })
@@ -701,7 +734,7 @@ function updateBatchPostsClassify(classify, operate, posts, openId) {
 /**
  * 更新label集合
  */
-function updateBatchPostsLabel(label, operate, posts, openId) {
+function updateBatchPostsLabel(label, operate, posts, openId, kind) {
   return wx.cloud.callFunction({
     name: 'miniBlog',
     data: {
@@ -710,6 +743,7 @@ function updateBatchPostsLabel(label, operate, posts, openId) {
       posts: posts,
       operate: operate,
       label: label,
+      kind: kind,
       openId: openId
     }
   })
@@ -928,6 +962,8 @@ module.exports = {
   getLabelList: getLabelList,
   getClassifyList: getClassifyList,
   getNewPostsList: getNewPostsList,
+  getNewPostsKind: getNewPostsKind,
+  getNewPostsLable: getNewPostsLable,
   deletePostById: deletePostById,
   uploadFile: uploadFile,
   getTempUrl: getTempUrl,

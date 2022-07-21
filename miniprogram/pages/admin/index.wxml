@@ -1,12 +1,12 @@
 <!-- 设置列表 -->
 <view class="cu-bar bg-white solid-bottom">
   <view class='action'>
-    <text class='cuIcon-titles text-orange '></text>
+    <text class='cuIcon-titles text-blue'></text>
     <text class="text-xl text-black">全局配置</text>
   </view>
 </view>
 
-<view class="cu-list menu shadow-lg">
+<view class="cu-list menu shadow-lg sm-border">
   <view class="cu-item arrow">
     <view class='content' bindtap='showMember'>
       <text class='cuIcon-vip text-orange text-xl'></text>
@@ -38,12 +38,12 @@
 
 <view class="cu-bar bg-white solid-bottom margin-top">
   <view class='action'>
-    <text class='cuIcon-titles text-orange'></text>
+    <text class='cuIcon-titles text-blue'></text>
     <text class="text-xl text-black">文章管理</text>
   </view>
 </view>
 
-<view class="cu-list menu shadow-lg">
+<view class="cu-list menu shadow-lg sm-border">
   <view class="cu-item arrow">
     <view class='content' bindtap='showComment'>
       <text class='cuIcon-comment text-cyan text-xl'></text>
@@ -63,8 +63,14 @@
     </view>
   </view>
   <view class="cu-item arrow">
+    <view class='content' bindtap='showKind'>
+      <text class='cuIcon-list text-brown text-xl'></text>
+      <text class='text-l'>类别管理</text>
+    </view>
+  </view>
+  <view class="cu-item arrow">
     <view class='content' bindtap='showLabel'>
-      <text class='cuIcon-tag text-grey text-xl'></text>
+      <text class='cuIcon-tag text-pink text-xl'></text>
       <text class='text-l'>标签管理</text>
     </view>
   </view>

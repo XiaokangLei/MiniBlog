@@ -579,7 +579,6 @@ Page({
         title: '加载中...',
       })
       that.submitContent(content, commentPage, "reject").then((res) => {
-        console.info(res)
         wx.hideLoading()
       })
     } catch (err) {
@@ -864,7 +863,6 @@ Page({
    * @param {} e 
    */
   _tap: function (e) {
-    console.info(e)
     try {
       if (e.target.dataset._el.attr.src != undefined) {
         wx.previewImage({

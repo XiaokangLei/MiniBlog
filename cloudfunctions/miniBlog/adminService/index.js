@@ -217,6 +217,12 @@ async function addBaseLabel(event) {
   let labelValue = {
     'label': event.labelName
   }
+  if(event.kind == 1){
+    labelValue = {
+      'kind': event.labelName
+    };
+    key = "basePostsKinds"
+  }
   let result = await db.collection(collection).where({
     key: key,
     value: labelValue
@@ -396,8 +402,14 @@ async function changeCommentFlagById(event) {
  */
 async function getLabelList(event) {
   const MAX_LIMIT = 100
+  let key_lk = ''
+  if (event.kind == 0) {
+    key_lk = 'basePostsLabels'
+  } else {
+    key_lk = 'basePostsKinds'
+  }
   const countResult = await db.collection('mini_config').where({
-    key: 'basePostsLabels'
+    key: key_lk
   }).count()
   const total = countResult.total
   if (total === 0) {
@@ -412,7 +424,7 @@ async function getLabelList(event) {
   const tasks = []
   for (let i = 0; i < batchTimes; i++) {
     const promise = db.collection('mini_config').where({
-      key: 'basePostsLabels'
+      key: key_lk
     }).skip(i * MAX_LIMIT).limit(MAX_LIMIT).get()
     tasks.push(promise)
   }
@@ -469,28 +481,51 @@ async function updateBatchPostsLabel(event) {
   for (let i = 0; i < event.posts.length; i++) {
     let result = await db.collection('mini_posts').doc(event.posts[i]).get()
     let oldLabels = result.data.label
+    if (event.kind == 1){
+      oldLabels = result.data.kind
+    }
     if (event.operate == 'add') {
       if (oldLabels.indexOf(event) > -1) {
         continue
       }
-      await db.collection('mini_posts').doc(event.posts[i]).update({
-        data: {
-          label: _.push([event.label])
-        }
-      })
+      if (event.kind == 0) {
+        await db.collection('mini_posts').doc(event.posts[i]).update({
+          data: {
+            label: _.push([event.label])
+          }
+        })
+      } else {
+        await db.collection('mini_posts').doc(event.posts[i]).update({
+          data: {
+            kind: _.push([event.label])
+          }
+        })
+      }
+
     } else if (event.operate == 'delete') {
 
       var index = oldLabels.indexOf(event.label);
+      if (event.kind == 1){
+        index = oldLabels.indexOf(event.label);
+      }
       if (index == -1) {
         continue
       }
       oldLabels.splice(index, 1);
+      if (event.kind == 0) {
+        await db.collection('mini_posts').doc(event.posts[i]).update({
+          data: {
+            label: oldLabels
+          }
+        })
+      } else {
+        await db.collection('mini_posts').doc(event.posts[i]).update({
+          data: {
+            kind: oldLabels
+          }
+        })
+      }
 
-      await db.collection('mini_posts').doc(event.posts[i]).update({
-        data: {
-          label: oldLabels
-        }
-      })
     }
   }
 

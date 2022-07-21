@@ -142,6 +142,16 @@ Page({
   },
 
   /**
+   * 跳转类别列表
+   * @param {*} e 
+   */
+  showKind: async function (e) {
+    wx.navigateTo({
+      url: '../admin/kindList/kindList'
+    })
+  },
+
+  /**
    * 跳转到评论列表
    * @param {*} e 
    */

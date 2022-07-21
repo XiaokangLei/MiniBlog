@@ -26,7 +26,6 @@ Page({
       this.setData({
         advert: result.result.value
       })
-      console.info(result)
     } catch (err) {
       console.info(err)
     } finally {
@@ -50,7 +49,6 @@ Page({
     advert.pointsStatus = e.detail.value.pointsStatus
     advert.pointsId = e.detail.value.pointsId
     let result = await api.upsertAdvertConfig(advert, app.globalData.openid)
-    console.info(result)
     if (result.result) {
       app.globalData.advert = advert
       wx.showToast({

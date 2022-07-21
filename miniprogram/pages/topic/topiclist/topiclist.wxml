@@ -1,5 +1,21 @@
 <import src="/templates/nodata.wxml" />
 
+<scroll-view scroll-x class="bg-white nav solids-bottom" scroll-with-animation wx:if="{{!loading && kindList.length > 0}}">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{item==kindCur?'text-green':''}}" wx:for="{{kindList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" bindtap='kindSelect' data-id="{{item}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+
+<scroll-view scroll-x class="bg-white nav solids-bottom" wx:if="{{!loading && labelList.length > 0}}">
+  <view class="padding-sm bg-white">
+    <view wx:for="{{labelList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" class="cu-tag round lg {{item==labelCur?'bg-blue light':''}}" bindtap='labelSelect' data-id="{{item}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>
+
 <!-- 文章列表 -->
 <view wx:for="{{posts}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}" id="{{item._id}}" data-db="mini_posts" bindtap="bindPostDetail">
   <view class="cu-card article">

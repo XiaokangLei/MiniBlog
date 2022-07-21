@@ -11,7 +11,11 @@ Page({
     nodata: false,
     nomore: false,
     classify: "",
-    loading: true
+    loading: true,
+    labelCur: '',
+    kindCur: '',
+    kindList: [],
+    labelList: []
   },
 
   /**
@@ -26,7 +30,69 @@ Page({
     wx.setNavigationBarTitle({
       title: classify
     })
-    await this.getPostsList(classify)
+    await this.getPostsKind(classify)
+  },
+
+  /**
+   * 获取文章列表
+   */
+  getPostsKind: async function (classify) {
+    let that = this
+    let result = await api.getNewPostsKind(classify)
+    if (result.data.length > 0) {
+      let labelList = await api.getNewPostsLable(result.data[0].value['kinds'][0])
+      that.setData({
+        kindList: result.data[0].value['kinds'],
+        kindCur: result.data[0].value['kinds'][0],
+        labelList: labelList.data[0].value['label'],
+        labelCur: labelList.data[0].value['label'][0]
+      })
+    }
+    await this.getPostsList(classify, that.data.kindCur, that.data.labelCur)
+
+  },
+
+  /**
+   * 标签按钮切换
+   * @param {*} e 
+   */
+  kindSelect: async function (e) {
+    let that = this
+    let kindCur = e.currentTarget.dataset.id
+    let labelList = await api.getNewPostsLable(kindCur)
+    let kind = []
+    if (labelList.data.length > 0) {
+      kind = labelList.data[0].value['label']
+    }
+    that.setData({
+      posts: [],
+      kindCur: kindCur,
+      labelList: kind,
+      labelCur: kind[0],
+      defaultSearchValue: "",
+      page: 1,
+      nomore: false,
+      nodata: false,
+    })
+    await that.getPostsList(that.data.classify, that.data.kindCur, that.data.labelCur)
+  },
+
+  /**
+   * 标签按钮切换
+   * @param {*} e 
+   */
+  labelSelect: async function (e) {
+    let that = this
+    let labelCur = e.currentTarget.dataset.id
+    that.setData({
+      posts: [],
+      labelCur: labelCur,
+      defaultSearchValue: "",
+      page: 1,
+      nomore: false,
+      nodata: false,
+    })
+    await that.getPostsList(that.data.classify, that.data.kindCur, that.data.labelCur)
   },
 
   /**
@@ -43,7 +109,7 @@ Page({
       nodata: false,
       defaultSearchValue: ""
     })
-    await this.getPostsList(that.data.classify)
+    await this.getPostsList(that.data.classify, that.data.kindCur, that.data.labelCur)
     wx.stopPullDownRefresh();
   },
 
@@ -51,21 +117,29 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: async function () {
-    await this.getPostsList(this.data.classify)
+    await this.getPostsList(this.data.classify, that.data.kindCur, that.data.labelCur)
   },
 
   /**
    * 获取文章列表
    */
-  getPostsList: async function (filter) {
+  getPostsList: async function (classify, kind, label) {
     let that = this
     let page = that.data.page
     if (that.data.nomore) {
       wx.hideLoading()
       return
     }
+    let containLabel = 1
+    if(!label){
+      containLabel = 2
+    }
     let where = {
-      classify: filter,
+      classify: classify || '',
+      kind: kind || '',
+      label: label || '',
+      containLabel: containLabel,
+      containKind: 1,
       isShow: 1
     }
     let result = await api.getNewPostsList(page, where)

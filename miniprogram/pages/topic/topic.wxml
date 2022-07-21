@@ -1,4 +1,4 @@
-<view class="cu-list menu card-menu margin-top shadow-warp bg-white" wx:for="{{classifyList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
+<!-- <view class="cu-list menu card-menu margin-top shadow-warp bg-white" wx:for="{{classifyList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
 
   <view class="cu-item bg-img" style="background-image: url({{item.url}}); height: 160rpx;">
     <view class="content padding-tb-sm">
@@ -10,9 +10,21 @@
         {{item.value.classifyDesc}}
       </view>
     </view>
-    <view class="text-xxxl cuIcon-{{item.icon || 'cascades'}} padding-right text-orange text-shadow"></view>
+    <view class="text-sl cuIcon-{{item.icon || 'cascades'}} padding-right text-orange text-shadow"></view>
   </view>
-</view>
+</view> -->
+
+<scroll-view scroll-y class="scrollPage margin-top">
+  <view class='nav-list'>
+    <view class="nav-li bg-{{item.color || 'blue'}} light shadow" wx:for="{{classifyList}}" wx:key="index" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
+      <view class="nav-title">{{item.value.classifyName}}</view>
+      <view class="nav-name">
+        <view class="text-cut" style="width:210rpx">{{item.value.classifyDesc}}</view>
+      </view>
+      <text class="cuIcon-{{item.icon || 'cascades'}} text-shadow"></text>
+    </view>
+  </view>
+</scroll-view>
 
 
 <view wx:if="{{loading}}">

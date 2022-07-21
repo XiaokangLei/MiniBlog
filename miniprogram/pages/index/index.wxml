@@ -32,16 +32,16 @@
   </scroll-view>
   <scroll-view wx:if="{{showHot}}" scroll-x class="bg-white nav solids-bottom">
     <view class="padding-sm bg-white">
-      <view wx:for="{{hotItems}}" wx:key="idx" wx:for-index="idx" data-data="{{item}}" class="cu-tag round lg {{idx==hotCur?'bg-blue':''}}" bindtap='hotSelect' data-id="{{idx}}">
+      <view wx:for="{{hotItems}}" wx:key="idx" wx:for-index="idx" data-data="{{item}}" class="cu-tag round lg {{idx==hotCur?'bg-blue light':''}}" bindtap='hotSelect' data-id="{{idx}}">
         {{item}}
       </view>
     </view>
   </scroll-view>
   <scroll-view wx:if="{{showLabels}}" scroll-x class="bg-white nav solids-bottom">
     <view class="padding-sm bg-white">
-      <view class="cu-tag round lg {{'全部'==labelCur?'bg-blue':''}}" data-id="全部" bindtap='labelSelect'>全部</view>
-      <view wx:for="{{labelList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" class="cu-tag round lg {{item.value['label']==labelCur?'bg-blue':''}}" bindtap='labelSelect' data-id="{{item.value['label']}}">
-        {{item.value['label']}}
+      <view class="cu-tag round lg {{'全部'==labelCur?'bg-blue light':''}}" data-id="全部" bindtap='labelSelect'>全部</view>
+      <view wx:for="{{labelList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" class="cu-tag round lg {{item.value['kind']==labelCur?'bg-blue light':''}}" bindtap='labelSelect' data-id="{{item.value['kind']}}">
+        {{item.value['kind']}}
       </view>
     </view>
   </scroll-view>
@@ -54,7 +54,9 @@
       <view class="cu-item shadow-warp bg-white">
         <view class="flex">
           <view class="title text-cut" style="max-width:580rpx">{{item.title}}</view>
-          <view class="margin-tb-sm cu-tag bg-mauve light sm round">{{item.classify}}</view>
+          <block wx:for="{{item.label}}" wx:key="idxx" wx:for-item="itemm">
+            <view class="margin-tb-sm cu-tag bg-mauve light sm round" wx:if="{{itemm}}">{{itemm}}</view>
+          </block>
         </view>
         <view class="content">
           <image src="{{item.defaultImageUrl}}" mode="aspectFill"></image>
