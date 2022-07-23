@@ -10,7 +10,7 @@
         <text class="text-xl text-black">{{nickName}}</text>
         <text class="{{vipDesc == 'VIP用户' ? 'text-orange' : 'text-grey'}} cuIcon-vip" bindtap="clickVip"></text>
       </view>
-      <view class="margin-top-sm">
+      <view class="margin-top-sm" bindtap="bindPoint">
         <text class="line-orange radius text-lg">{{totalPoints}}</text><text class="text-xs text-black"> 积分</text>
       </view>
     </view>
@@ -21,7 +21,7 @@
 
   <!-- 签到 -->
   <view class="cu-list-special margin-top-xs">
-    <view class="bg-gradual-orange signbanner radius-l shadow-blur">
+    <view class="bg-gradual-pink signbanner radius-l shadow-blur">
       <view class="flex solid-bottom justify-between align-center">
         <view class="padding-sm radius">
           已连续签到:
@@ -94,7 +94,7 @@
       <text class='cuIcon-github text-mauve text-xl'></text>
       <text class="text-l">GitHub开源</text>
     </view>
-    <view class="action">
+    <view class="action padding-right-xs">
       <text class="text-blue cuIcon-copy"></text>
     </view>
   </view>
@@ -123,7 +123,7 @@
 <view class="cu-modal {{showVIPModal?'show':''}}">
   <view class="cu-dialog">
     <view class="cu-bar bg-white justify-end">
-      <view class="content">成为VIP说明</view>
+      <view class="content text-bold">成为VIP说明</view>
       <view class="action" bindtap="hideModal">
         <text class="cuIcon-close text-red"></text>
       </view>

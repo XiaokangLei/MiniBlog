@@ -9,6 +9,9 @@
     "pages/mine/release/release",
     "pages/mine/sign/sign",
     "pages/mine/point/point",
+    "pages/mine/about/about",
+    "pages/mine/avatar/avatar",
+    "pages/mine/resource/resource",
     "pages/mine/point/pointDetail",
     "pages/detail/detail",
     "pages/admin/index",
@@ -18,10 +21,7 @@
     "pages/admin/classify/classify",
     "pages/admin/advert/advert",
     "pages/admin/member/member",
-    "pages/mine/avatar/avatar",
-    "pages/mine/resource/resource",
     "pages/admin/isShow/isshow",
-    "pages/mine/about/about",
     "pages/admin/kindList/kindList"
   ],
   "window": {

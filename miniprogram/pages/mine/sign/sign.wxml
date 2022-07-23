@@ -4,15 +4,17 @@
     <text class="text-sl text-orange">{{signedDays}}</text>
     天,拥有 <text class="text-sl text-green">{{signedRightCount}}</text> 次补签机会
   </view>
-  <view class="radius text-grey text-sm">连续签到可以获取更多积分哦</view>
+  <view class="radius text-grey text-sm padding-top-xs">连续签到可以获取更多积分哦</view>
 </view>
 
+<!-- 日历组件 -->
 <view class="bg-white margin-sm radius-xl margin-top padding-bottom">
   <view class="padding-sm">
     <calendar id="calendar" calendarConfig="{{calendarConfig}}" bind:onTapDay="onTapDay" bind:afterTapDay="afterTapDay" bind:whenChangeMonth="whenChangeMonth" bind:afterCalendarRender="afterCalendarRender"></calendar>
   </view>
 </view>
 
+<!-- 签到按钮 -->
 <view class='sign-new'>
   <view class='new-head'>
     <!-- 未签到 -->
@@ -26,6 +28,7 @@
   </view>
 </view>
 
+<!-- 广告（占坑） -->
 <view wx:if="{{showBanner}}" class="cu-item margin-top-xs">
   <view class="content padding-right-sm padding-left-sm">
     <ad binderror="adError" bindclose="adClose" unit-id="{{showBannerId}}"></ad>

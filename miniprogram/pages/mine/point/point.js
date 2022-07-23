@@ -266,7 +266,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: '有内容的小程序',
-      imageUrl: 'https://test-91f3af.tcb.qcloud.la/sharepic.jpg?sign=6a33faf314c17c7ed2e234911d312b93&t=1585835244',
+      imageUrl: 'https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/share.jpg',
       path: '/pages/index/index?openid=' + app.globalData.openid
     }
   },

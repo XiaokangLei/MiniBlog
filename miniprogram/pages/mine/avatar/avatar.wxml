@@ -3,13 +3,14 @@
   <button class="avatar" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
     <image src="{{avatarUrl}}"></image>
   </button>
+  <view class="text-center padding-top">{{nickName}}</view>
 </view>
 
 <!-- 昵称编辑框、提示、提交按钮 -->
 <view class="margin-top-xl">
   <form catchsubmit="formSubmit">
     <input type="nickname" class="weui-input" name="input" placeholder="请输入昵称" />
-    <text class="margin-left-xl text-gray cuIcon-infofill">提示：点击上方头像修改头像</text>
+    <text class="margin-left-xl text-gray cuIcon-infofill">提示：点击上方头像可修改头像</text>
     <view class="flex margin-top-xxl justify-center">
       <button class="cu-btn bg-blue margin-tb-sm lg" formType="submit">提交修改</button>
     </view>

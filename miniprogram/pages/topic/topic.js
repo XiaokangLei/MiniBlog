@@ -65,7 +65,7 @@ Page({
    */
   onShareAppMessage() {
     return {
-      title: '开源博客小程序',
+      title: '有内容的小程序',
       imageUrl: 'https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/share.jpg',
       path: '/pages/index/index'
     }

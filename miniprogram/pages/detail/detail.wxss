@@ -54,6 +54,7 @@
   color: #2f80ed;
   position: absolute;
   bottom: 0;
+  padding-bottom: 80rpx;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -66,7 +67,7 @@
   padding: 3px;
   position: absolute;
   right: 50%;
-  bottom: 6rpx;
+  bottom: 30rpx;
   transform: translateX(4px) rotate(-45deg);
   opacity: 0.6;
 }

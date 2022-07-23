@@ -17,15 +17,15 @@ page {
   --orange: #f37b1d;
   --yellow: #fbbd08;
   --olive: #8dc63f;
-  --green: #39b54a;
-  --cyan: #1cbbb4;
+  --green: #3eb93b;
+  --cyan: #37c0fe;
   --blue: #0081ff;
-  --purple: #6739b6;
-  --mauve: #9c26b0;
+  --purple: #8044de;
+  --mauve: #b745cb;
   --pink: #e03997;
   --brown: #a5673f;
   --grey: #8799a3;
-  --black: #333333;
+  --black: #111111;
   --darkGray: #666666;
   --gray: #aaaaaa;
   --ghostWhite: #f1f1f1;
@@ -44,12 +44,12 @@ page {
   --brownLight: #ede1d9;
   --greyLight: #e7ebed;
   /* 渐变色 */
-  --gradualRed: linear-gradient(45deg, #f43f3b, #ec008c);
+  --gradualRed: linear-gradient(45deg, #f33a41, #ed0586);
   --gradualOrange: linear-gradient(45deg, #ff9700, #ed1c24);
   --gradualGreen: linear-gradient(45deg, #39b54a, #8dc63f);
   --gradualPurple: linear-gradient(45deg, #9000ff, #5e00ff);
-  --gradualPink: linear-gradient(45deg, #ec008c, #6739b6);
-  --gradualBlue: linear-gradient(45deg, #0081ff, #1cbbb4);
+  --gradualPink: linear-gradient(45deg, #fea894, #ff1047);
+  --gradualBlue: linear-gradient(45deg, #06edfe, #48b2fe);
   /* 阴影透明色 */
   --ShadowSize: 6rpx 6rpx 8rpx;
   --redShadow: rgba(204, 69, 59, 0.2);
@@ -3546,7 +3546,7 @@ scroll-view.cu-steps .cu-item {
 }
 
 .bg-shadeBottom-light {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 0.9));
+  background-image: linear-gradient(rgba(129, 129, 129, 0.02), rgba(0, 0, 0, 0.6));
   color: var(--white);
 }
 

@@ -77,11 +77,18 @@
 <view class="bg-white margin-top-xs" wx:if="{{post.title && isAdmin && isPost}}">
 
   <view class="cu-bar bg-white">
-    <view class='action'>
-      <text class='cuIcon-titles text-blue '></text>
-      共{{post.totalComments||0}}条评论
+    <view class="action sub-title">
+      <text class="text-xl text-bold text-blue">评论列表</text>
+      <text class="bg-gradual-blue" style="width:4.2rem"></text>
     </view>
   </view>
+
+  <!-- <view class="cu-bar bg-white">
+    <view class='action'>
+      <text class='cuIcon-titles text-blue'></text>
+      共{{post.totalComments||0}}条评论
+    </view>
+  </view> -->
 
   <!-- 数据不存在 -->
   <view wx:if="{{nodata}}">
@@ -115,7 +122,7 @@
 
         <view class='flex justify-between'>
           <view class='text-gray text-df'>{{item.createDate}}</view>
-          <view>
+          <view data-id="{{item._id}}" data-name="{{item.cNickName}}" data-openid="{{item._openid}}" bindtap="focusComment">
             <text class="cuIcon-messagefill text-gray margin-left-sm"></text>
             <text class="text-gray margin-left-xs">{{item.childComment.length}}</text>
           </view>

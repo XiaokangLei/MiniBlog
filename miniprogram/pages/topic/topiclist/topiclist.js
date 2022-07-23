@@ -40,12 +40,25 @@ Page({
     let that = this
     let result = await api.getNewPostsKind(classify)
     if (result.data.length > 0) {
-      let labelList = await api.getNewPostsLable(result.data[0].value['kinds'][0])
+      if (result.data[0].value['kinds']) {
+        let labelList = await api.getNewPostsLable(result.data[0].value['kinds'][0])
+        that.setData({
+          kindList: result.data[0].value['kinds'],
+          kindCur: result.data[0].value['kinds'][0],
+          labelList: labelList.data[0].value['label'],
+          labelCur: labelList.data[0].value['label'][0]
+        })
+      } else {
+        that.setData({
+          nodata: true,
+          loading: false
+        })
+      }
+
+    } else {
       that.setData({
-        kindList: result.data[0].value['kinds'],
-        kindCur: result.data[0].value['kinds'][0],
-        labelList: labelList.data[0].value['label'],
-        labelCur: labelList.data[0].value['label'][0]
+        nodata: true,
+        loading: false
       })
     }
     await this.getPostsList(classify, that.data.kindCur, that.data.labelCur)
@@ -126,12 +139,12 @@ Page({
   getPostsList: async function (classify, kind, label) {
     let that = this
     let page = that.data.page
-    if (that.data.nomore) {
-      wx.hideLoading()
-      return
-    }
+    // if (that.data.nomore) {
+    //   wx.hideLoading()
+    //   return
+    // }
     let containLabel = 1
-    if(!label){
+    if (!label) {
       containLabel = 2
     }
     let where = {
