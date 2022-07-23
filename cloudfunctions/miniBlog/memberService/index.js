@@ -434,7 +434,7 @@ async function addShareDetail(event) {
       if (memberInfos.data.length === 0) {
         let task1 = db.collection('mini_member').add({
           data: {
-            _openid: event.info.openId,
+            _openid: event.info.shareOpenId,
             totalSignedCount: 0, //累计签到数
             continueSignedCount: 0, //持续签到
             totalPoints: 100, //积分
@@ -472,7 +472,7 @@ async function addShareDetail(event) {
       //积分明细
       let task5 = db.collection('mini_point_detail').add({
         data: {
-          openId: event.info.openId,
+          openId: event.info.shareOpenId,
           operateType: 0, //0:获得 1:使用 2:过期
           count: 100,
           desc: "邀请好友得积分",
