@@ -10,6 +10,18 @@
   </swiper>
 </view>
 
+<!-- 个人中心，收藏、点赞、资源、积分 -->
+<view class="cu-list grid col-4 no-border text-black">
+  <view class="cu-item" wx:for="{{iconList}}" wx:key="idx" bindtap="{{item.bindtap}}">
+    <view class="cuIcon-{{item.icon}} text-{{item.color}} text-shadow">
+      <view class="cu-tag badge" wx:if="{{item.badge!=0}}">
+        <block wx:if="{{item.badge!=1}}">{{item.badge>99?"99+":item.badge}}</block>
+      </view>
+    </view>
+    <text>{{item.name}}</text>
+  </view>
+</view>
+
 <!-- 搜索栏 -->
 <view class='box'>
   <form bindsubmit='bindconfirm'>

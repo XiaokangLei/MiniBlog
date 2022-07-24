@@ -34,7 +34,32 @@ Page({
     labelCur: "全部",
     whereItem: ['', '_createTime', ''], //下拉查询条件
     loading: true,
-    cancel: false
+    cancel: false,
+    iconList: [{
+      icon: 'github',
+      color: 'mauve',
+      badge: 0,
+      name: '开源项目',
+      bindtap: "openTopicGithub"
+    }, {
+      icon: 'formfill',
+      color: 'red',
+      badge: 0,
+      name: '面试刷题',
+      bindtap: "openTopicInterview"
+    }, {
+      icon: 'brandfill',
+      color: 'yellow',
+      badge: 0,
+      name: '小 程 序',
+      bindtap: "openTopicMini"
+    }, {
+      icon: 'goodsnewfill',
+      color: 'orange',
+      badge: 0,
+      name: '积分商城',
+      bindtap: "bindNotice"
+    }],
   },
 
   /**
@@ -60,6 +85,45 @@ Page({
     await this.getSwiperList()
     // 获取博客内容
     await that.getPostsList('', '_createTime')
+  },
+
+  /**
+   * 跳转至专题详情
+   * @param {} e 
+   */
+  openTopicGithub: async function (e) {
+    wx.navigateTo({
+      url: '../topic/topiclist/topiclist?classify=开源项目'
+    })
+  },
+
+  /**
+   * 跳转至专题详情
+   * @param {} e 
+   */
+  openTopicInterview: async function (e) {
+    wx.navigateTo({
+      url: '../topic/topiclist/topiclist?classify=算法基础'
+    })
+  },
+  /**
+   * 跳转至专题详情
+   * @param {} e 
+   */
+  openTopicMini: async function (e) {
+    wx.navigateTo({
+      url: '../topic/topiclist/topiclist?classify=小程序'
+    })
+  },
+
+  /**
+   * 跳转至专题详情
+   * @param {} e 
+   */
+  bindNotice: async function (e) {
+    wx.navigateTo({
+      url: '../mine/notice/notice'
+    })
   },
 
   /**
@@ -196,16 +260,18 @@ Page({
           scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
           showHot: false,
           showLabels: true,
+          nomore: false,
+          nodata: false,
+          posts: [],
+          page: 1,
           cancel: false
         })
 
-        let task = that.getPostsList("", '_createTime')
+        await that.getPostsList("", '_createTime')
         let labelList = await api.getLabelList(app.globalData.openid, 1)
         that.setData({
           labelList: labelList.result.data
         })
-        await task
-
         break
       }
     }

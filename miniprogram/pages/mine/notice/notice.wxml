@@ -16,7 +16,7 @@
     <view class="cu-list menu-avatar">
       <view class="cu-bar btn-group bg-white padding-tb padding-lr-xl">
         <button class="cu-btn bg-green shadow-blur round" data-points="{{item.points}}" data-title="{{item.title}}" data-id="{{item._id}}" data-baidu="{{item.baidu}}" data-url="{{item.defaultImageUrl}}" bindtap="clickPoint">
-          <text wx:if="{{item.points != 0}}">限时免费兑换</text>
+          <text wx:if="{{item.points == 0}}">限时免费兑换</text>
           <text wx:else>兑换/{{item.points}}积分</text>
         </button>
         <button class="cu-btn bg-blue shadow-blur round" id="{{item._id}}" data-db="mini_resource" bindtap="bindDetail" data-target="Image">效果预览</button>

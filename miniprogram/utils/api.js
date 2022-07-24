@@ -256,7 +256,7 @@ function getPostsList(page, filter, isShow, orderBy, label) {
   }
 
   if (orderBy == undefined || orderBy == "") {
-    orderBy = "createTime"
+    orderBy = "_createTime"
   }
 
   if (label != undefined && label != "") {

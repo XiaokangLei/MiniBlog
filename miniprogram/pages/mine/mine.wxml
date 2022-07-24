@@ -23,7 +23,7 @@
   <view class="cu-list-special margin-top-xs">
     <view class="bg-gradual-pink signbanner radius-l shadow-blur">
       <view class="flex solid-bottom justify-between align-center">
-        <view class="padding-sm radius">
+        <view class="padding radius">
           已连续签到:
           <text class="text-sl">{{signedDays}}</text>
           天
@@ -87,7 +87,7 @@
   </view>
 </view>
 
-<view class="cu-list menu margin-top-sm shadow-lg">
+<view class="cu-list menu margin-top-sm shadow-lg sm-border">
   <!-- 开源 -->
   <view class="cu-item" data-value="https://github.com/XiaokangLei/MiniBlog.git" bindtap="bgCopy">
     <view class='content'>
