@@ -108,7 +108,7 @@
       <view class="cu-avatar lg round {{item.bgUrl}}" style="{{item.style}}">
         <text class="{{item.icon}} lg text-gray"></text>
       </view>
-      <view class="text-center text-sm">{{item.nickName}}</view>
+      <view class="text-center text-sm text-cut" style="max-width: 96rpx;">{{item.nickName}}</view>
     </view>
   </view>
   <view class="text-center padding-bottom-xl margin-top-xl">

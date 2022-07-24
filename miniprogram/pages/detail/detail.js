@@ -730,7 +730,7 @@ Page({
     }
 
     if (qrCodeUrl == "") {
-      let addReult = await api.addPostQrCode(that.data.post._id, that.data.post._updateTime)
+      let addReult = await api.addPostQrCode(that.data.post._id, that.data.post._updateTime, that.data.dbName)
       qrCodeUrl = addReult.result[0].tempFileURL
     }
     // 海报图片配置

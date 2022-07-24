@@ -449,13 +449,14 @@ function addPostChildComment(id, postId, comments, accept) {
  * @param {*} postId 
  * @param {*} comments 
  */
-function addPostQrCode(postId, timestamp) {
+function addPostQrCode(postId, timestamp, dbName) {
   return wx.cloud.callFunction({
     name: 'miniBlog',
     data: {
       type: 'postsService',
       action: "addPostQrCode",
       timestamp: timestamp,
+      dbName: dbName,
       postId: postId
     }
   })

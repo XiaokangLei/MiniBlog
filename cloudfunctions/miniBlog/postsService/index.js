@@ -56,7 +56,7 @@ async function addPostQrCode(event) {
   let scene = 'timestamp=' + event.timestamp;
   let result = await cloud.openapi.wxacode.getUnlimited({
     scene: scene,
-    page: 'pages/detail/detail'
+    page: '/pages/detail/detail?id=' + event.postId + '&dbName=' + event.dbName
   })
 
   if (result.errCode === 0) {
