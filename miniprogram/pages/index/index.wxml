@@ -1,16 +1,20 @@
 <import src="/templates/nodata.wxml" />
 
+<!-- <image-loader width="640rpx" height="360rpx" originalImage="{{imgPath}}" finishLoadFlag="{{finishLoadFlag}}" errorFlag="{{errorFlag}}" bind:changeFlag="changeFlag"></image-loader> -->
+
+
 <!-- swiper -->
 <view class="padding-bottom-xs padding-lr-lg" style="background: linear-gradient(to bottom, #F6F6F6, #FFFFFF);">
   <swiper class="screen-swiper square-dot" style="overflow:hidden; border-radius:32rpx;transform: translateY(0);" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
     <swiper-item wx:for="{{swiperList}}" wx:key="item" id="{{item.postId}}" data-db="mini_posts" bindtap="bindPostDetail">
-      <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image>
+      <!-- <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image> -->
+      <image-loader mode="aspectFill" width="640rpx" height="360rpx" originalImage="{{item.url}}" finishLoadFlag="{{finishLoadFlag}}" errorFlag="{{errorFlag}}" bind:changeFlag="changeFlag"></image-loader>
       <video src="{{item.url}}" autoplay loop muted show-play-btn="{{false}}" controls="{{false}}" objectFit="cover" wx:if="{{item.type=='video'}}"></video>
     </swiper-item>
   </swiper>
 </view>
 
-<!-- 个人中心，收藏、点赞、资源、积分 -->
+<!-- 分类跳转 -->
 <view class="cu-list grid col-4 no-border text-black">
   <view class="cu-item" wx:for="{{iconList}}" wx:key="idx" bindtap="{{item.bindtap}}">
     <view class="cuIcon-{{item.icon}} text-{{item.color}} text-shadow">

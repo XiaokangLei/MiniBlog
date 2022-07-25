@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "九月Online",
   "enablePullDownRefresh": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "image-loader": "../../components/image-loader/image-loader"
+  }
 }

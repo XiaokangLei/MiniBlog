@@ -60,6 +60,9 @@ Page({
       name: '积分商城',
       bindtap: "bindNotice"
     }],
+    finishLoadFlag: false,
+    errorFlag: false,
+    imgPath: ''
   },
 
   /**
@@ -86,6 +89,18 @@ Page({
     // 获取博客内容
     await that.getPostsList('', '_createTime')
   },
+
+  //imgPath 为远程图片地址
+  //changeFlag 函数是切换远程图片地址要更改当前图片加载状态
+  changeFlag(e) {
+    let finishLoadFlag = e.detail.finishLoadFlag;
+    let errorFlag = e.detail.errorFlag;
+    this.setData({
+      finishLoadFlag,
+      errorFlag
+    })
+  },
+
 
   /**
    * 跳转至专题详情
