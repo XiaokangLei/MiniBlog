@@ -83,12 +83,6 @@
     </view>
   </view>
 
-  <!-- <view class="cu-bar bg-white">
-    <view class='action'>
-      <text class='cuIcon-titles text-blue'></text>
-      共{{post.totalComments||0}}条评论
-    </view>
-  </view> -->
 
   <!-- 数据不存在 -->
   <view wx:if="{{nodata}}">
@@ -164,10 +158,6 @@
   </view>
 </view>
 
-<!-- 数据加载完 -->
-<!-- <view wx:if="{{post.title && !isAdmin}}">
-  <view class="cu-load loading text-orange over"></view>
-</view> -->
 
 <!-- 生成海报组件 -->
 <poster id="poster" hide-loading="{{false}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>

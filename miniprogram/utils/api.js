@@ -223,19 +223,20 @@ function getNewPostsList(page, filter, orderBy) {
 }
 
 function getNewPostsKind(classify) {
-  
+
   return db.collection('mini_config')
     .where({
       'value.classifyName': classify
-      })
+    })
     .get()
 }
+
 function getNewPostsLable(kind) {
-  
+
   return db.collection('mini_config')
     .where({
       'value.kind': kind
-      })
+    })
     .get()
 }
 

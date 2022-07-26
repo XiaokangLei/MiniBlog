@@ -76,22 +76,6 @@
   </view>
 </view>
 
-<!-- <view class="cu-bar bg-white solid-bottom margin-top">
-  <view class='action'>
-    <text class='cuIcon-titles text-orange'></text>
-    <text class="text-xl text-black">其他</text>
-  </view>
-</view>
-
-<view class="cu-list menu shadow-lg">
-  <view class="cu-item arrow">
-    <view class='content' bindtap='showLabel'>
-      <text class='cuIcon-tagfill text-blue text-xl'></text>
-      <text class='text-l'>展示管理</text>
-    </view>
-  </view>
-</view> -->
-
 <!-- 版本发布窗口 -->
 <view class="cu-modal {{isReleaseShow?'show':''}}">
   <view class="cu-dialog">

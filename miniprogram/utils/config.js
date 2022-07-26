@@ -8,7 +8,7 @@ var fileIdPre = 'cloud://test-we0f3.7465-test-we0f3-1301386292/'
 /**
  * 云开发环境
  */
-var env ="test-we0f3"
+var env = "test-we0f3"
 // var env = "final-6gypsolb231307a9"
 
 /**

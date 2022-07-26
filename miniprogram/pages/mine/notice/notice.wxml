@@ -21,24 +21,6 @@
         </button>
         <button class="cu-btn bg-blue shadow-blur round" id="{{item._id}}" data-db="mini_resource" bindtap="bindDetail" data-target="Image">效果预览</button>
       </view>
-      <!-- <view class="cu-item">
-      
-        <view class="cu-avatar round lg" style="background-image:url(https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/%E5%89%91%E6%8C%87Offer/Offer_light.jpg?sign=9c78f95f602d8de1e2260c93b631ea2e&t=1656768535);"></view>
-        <view class="content">
-        
-          <view class="text-grey">L.</view>
-          <view class="text-gray text-sm flex justify-between">
-            十天前
-            <view class="text-gray text-sm">
-              <button class="cu-btn round bg-blue shadow">积分兑换</button>
-              <button class="cu-btn round bg-blue shadow">预览查看</button>
-              <text class="cuIcon-attention margin-lr-xs"></text> 10
-              <text class="cuIcon-like margin-lr-xs"></text> 20
-              <text class="cuIcon-down margin-lr-xs"></text> 30
-            </view>
-          </view>
-        </view>
-      </view> -->
     </view>
   </view>
 </view>

@@ -1,32 +1,14 @@
 <import src="/templates/nodata.wxml" />
 
-<!-- <view class="cu-list menu card-menu margin-top shadow-warp bg-white" wx:for="{{classifyList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
-
-  <view class="cu-item bg-img" style="background-image: url({{item.url}}); height: 160rpx;">
-    <view class="content padding-tb-sm">
-      <view class="text-orange">
-        <text class="cuIcon-title"></text>
-        <text class="text-bold">{{item.value.classifyName}}</text>
-      </view>
-      <view class="text-gray text-sm padding-top-xs padding-left-xs">
-        {{item.value.classifyDesc}}
-      </view>
+<view class='nav-list margin-top'>
+  <view class="nav-li bg-{{item.color || 'blue'}} light shadow" wx:for="{{classifyList}}" wx:key="index" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
+    <view class="nav-title">{{item.value.classifyName}}</view>
+    <view class="nav-name">
+      <view class="text-cut" style="width:210rpx">{{item.value.classifyDesc}}</view>
     </view>
-    <view class="text-sl cuIcon-{{item.icon || 'cascades'}} padding-right text-orange text-shadow"></view>
+    <text class="cuIcon-{{item.icon || 'cascades'}} text-shadow text-xxl"></text>
   </view>
-</view> -->
-
-<!-- <scroll-view scroll-y class="scrollPage margin-top"> -->
-  <view class='nav-list margin-top'>
-    <view class="nav-li bg-{{item.color || 'blue'}} light shadow" wx:for="{{classifyList}}" wx:key="index" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
-      <view class="nav-title">{{item.value.classifyName}}</view>
-      <view class="nav-name">
-        <view class="text-cut" style="width:210rpx">{{item.value.classifyDesc}}</view>
-      </view>
-      <text class="cuIcon-{{item.icon || 'cascades'}} text-shadow"></text>
-    </view>
-  </view>
-<!-- </scroll-view> -->
+</view>
 
 
 <view wx:if="{{loading}}">

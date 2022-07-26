@@ -1,8 +1,6 @@
 /**app.wxss**/
 @import "/colorui/icon.wxss";
 @import "/colorui/colorui.wxss";
-/* @import "/colorui/editor.wxss";
-@import "/colorui/editorIcon.wxss"; */
 
 .container {
   display: flex;
@@ -22,17 +20,13 @@
 }
 
 .nodata .icon {
-  height: 156rpx;
-  background: url("https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/nodata.png") no-repeat center/194rpx auto;
+  height: 164rpx;
+  background: url("https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/bg.svg") no-repeat center/210rpx auto;
 }
 
 .nodata .txt {
   padding-top: 60rpx;
 }
-
-/* .scrollPage {
-  height: 100vh;
-} */
 
 .nav-list {
   display: flex;
@@ -46,7 +40,7 @@
   border-radius: 20rpx;
   width: 45%;
   margin: 0 2.5% 40rpx;
-  background-image: url(https://6669-final-6gypsolb231307a9-1304273986.tcb.qcloud.la/others/0004.svg);
+  background-image: url(https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/0004.svg);
   background-size: cover;
   background-position: center;
   position: relative;
@@ -114,17 +108,11 @@
   opacity: 0.3;
 }
 
-/* .nav-name::first-letter {
-  font-weight: bold;
-  font-size: 36rpx;
-  margin-right: 1px;
-} */
-
 .nav-li text {
   position: absolute;
-  right: 25rpx;
-  top: 25rpx;
-  font-size: 58rpx;
+  right: 30rpx;
+  top: 30rpx;
+  font-size: 72rpx;
   width: 60rpx;
   height: 60rpx;
   text-align: center;

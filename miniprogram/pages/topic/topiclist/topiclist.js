@@ -139,10 +139,6 @@ Page({
   getPostsList: async function (classify, kind, label) {
     let that = this
     let page = that.data.page
-    // if (that.data.nomore) {
-    //   wx.hideLoading()
-    //   return
-    // }
     let containLabel = 1
     if (!label) {
       containLabel = 2
