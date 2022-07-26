@@ -63,7 +63,11 @@ Page({
       })
     }
     if (options.scene) {
-      blogId = decodeURIComponent(options.scene);
+      blogId = decodeURIComponent(options.scene)
+      dbName == 'mini_posts'
+      that.setData({
+        isPost: true
+      })
     }
     let advert = app.globalData.advert
     //验证是否是VIP
@@ -728,7 +732,6 @@ Page({
       let qrCode = await api.getReportQrCodeUrl(that.data.post.qrCode);
       qrCodeUrl = qrCode.fileList[0].tempFileURL
     }
-
     if (qrCodeUrl == "") {
       let addReult = await api.addPostQrCode(that.data.post._id, that.data.post._updateTime, that.data.dbName)
       qrCodeUrl = addReult.result[0].tempFileURL
