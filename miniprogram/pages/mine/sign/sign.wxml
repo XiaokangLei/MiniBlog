@@ -4,7 +4,7 @@
     <text class="text-sl text-orange">{{signedDays}}</text>
     天,拥有 <text class="text-sl text-green">{{signedRightCount}}</text> 次补签机会
   </view>
-  <view class="radius text-grey text-sm padding-top-xs">连续签到可以获取更多积分哦</view>
+  <view class="radius text-grey text-df padding-top-xs">连续签到可以获取对应天数的积分,最高每天获取<text class="text-red">30</text>积分</view>
 </view>
 
 <!-- 日历组件 -->

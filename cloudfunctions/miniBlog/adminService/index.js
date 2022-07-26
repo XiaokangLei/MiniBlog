@@ -1,7 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 cloud.init({
-  env: 'final-6gypsolb231307a9'
+  env: 'test-we0f3'
 })
 
 // const rp = require('request-promise');
@@ -9,8 +9,8 @@ const dateUtils = require('date-utils')
 const db = cloud.database()
 const _ = db.command
 const RELEASE_LOG_KEY = 'releaseLogKey'
-const APPLY_TEMPLATE_ID = 'DI_AuJDmFXnNuME1vpX_hY2yw1pR6kFXPZ7ZAQ0uLOY'
-const authorOpenId = 'oDlhc5ICcF_CLaQt9v_EoFgCnhZE'
+const APPLY_TEMPLATE_ID = 'mCInmCCR_RzdMDNvBN2ranJaTKX74-4BqP9w_R0IRKg'
+const authorOpenId = 'osfK84p_BuImjfDncxatyuJQq4n8'
 
 // 云函数入口函数
 exports.main = async (event, context) => {

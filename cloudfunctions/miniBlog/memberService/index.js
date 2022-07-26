@@ -1,7 +1,7 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
 cloud.init({
-  env: 'final-6gypsolb231307a9'
+  env: 'test-we0f3'
 })
 const db = cloud.database()
 const _ = db.command
@@ -67,8 +67,8 @@ async function addSignAgain(event) {
       let continueSignedCount = memberInfo.continueSignedCount + 1
 
       pointCount = continueSignedCount
-      if (continueSignedCount > 30) {
-        pointCount = 30
+      if (continueSignedCount > 7) {
+        pointCount = 7
       }
 
       let task2 = db.collection('mini_member').doc(memberInfo._id).update({
@@ -156,8 +156,8 @@ async function addSign(event) {
       }
 
       pointCount = continueSignedCount
-      if (continueSignedCount > 30) {
-        pointCount = 30
+      if (continueSignedCount > 7) {
+        pointCount = 7
       }
 
       let task2 = db.collection('mini_member').doc(memberInfo._id).update({

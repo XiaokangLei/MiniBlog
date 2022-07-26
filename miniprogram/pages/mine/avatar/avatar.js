@@ -1,5 +1,5 @@
 // pages/mine/avatar/avatar.js
-
+const config = require('../../../utils/config.js')
 const db = wx.cloud.database()
 const _ = db.command
 const app = getApp();
@@ -59,7 +59,7 @@ Page({
         that.addImagePath(res.fileID)
       },
       fail: err => {
-        that.addImagePath('cloud://final-6gypsolb231307a9.6669-final-6gypsolb231307a9-1304273986/' + that.data.openId + '.png')
+        that.addImagePath(config.fileIdPre + that.data.openId + '.png')
       }
     })
   },

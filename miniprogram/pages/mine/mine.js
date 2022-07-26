@@ -318,7 +318,7 @@ Page({
    */
   applyVip: async function (e) {
     let that = this
-    let tempalteId = '10XxRQC7TIOQTjdDWczTF8Bokgwkd9pkE0j7EiGW8eM'
+    let tempalteId = config.vipApplyTemplateId
     wx.requestSubscribeMessage({
       tmplIds: [tempalteId],
       success(res) {

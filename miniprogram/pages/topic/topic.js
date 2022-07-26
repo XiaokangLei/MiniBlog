@@ -7,6 +7,7 @@ Page({
    */
   data: {
     classifyList: [],
+    nodata: false,
     loading: true
   },
 
@@ -43,10 +44,18 @@ Page({
   getClassifyList: async function () {
     let that = this
     let classifyList = await api.getClassifyList()
-    that.setData({
-      classifyList: classifyList.result.data,
-      loading: false
-    })
+    if (classifyList.result.data.length == 0) {
+      that.setData({
+        nodata: true,
+        loading: false
+      })
+    } else {
+      that.setData({
+        classifyList: classifyList.result.data,
+        loading: false
+      })
+    }
+
   },
 
   /**

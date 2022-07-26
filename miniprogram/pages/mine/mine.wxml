@@ -7,7 +7,7 @@
     </view>
     <view class="padding-sm margin-xs radius">
       <view class="flex align-start">
-        <text class="text-xl text-black">{{nickName}}</text>
+        <text class="text-xl text-black text-cut" style="max-width:440rpx">{{nickName}}</text>
         <text class="{{vipDesc == 'VIP用户' ? 'text-orange' : 'text-grey'}} cuIcon-vip" bindtap="clickVip"></text>
       </view>
       <view class="margin-top-sm" bindtap="bindPoint">

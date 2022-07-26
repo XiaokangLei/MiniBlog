@@ -4,7 +4,7 @@
 
 
 <!-- swiper -->
-<view class="padding-bottom-xs padding-lr-lg" style="background: linear-gradient(to bottom, #F6F6F6, #FFFFFF);">
+<view class="padding-bottom-xs padding-lr-lg" style="background: linear-gradient(to bottom, #F6F6F6, #FFFFFF);" wx:if="{{swiperList.length > 0}}">
   <swiper class="screen-swiper square-dot" style="overflow:hidden; border-radius:32rpx;transform: translateY(0);" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
     <swiper-item wx:for="{{swiperList}}" wx:key="item" id="{{item.postId}}" data-db="mini_posts" bindtap="bindPostDetail">
       <!-- <image src="{{item.url}}" mode="aspectFill" wx:if="{{item.type=='image'}}"></image> -->

@@ -1,3 +1,5 @@
+<import src="/templates/nodata.wxml" />
+
 <!-- <view class="cu-list menu card-menu margin-top shadow-warp bg-white" wx:for="{{classifyList}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
 
   <view class="cu-item bg-img" style="background-image: url({{item.url}}); height: 160rpx;">
@@ -29,4 +31,9 @@
 
 <view wx:if="{{loading}}">
   <view class="cu-load loading text-orange"></view>
+</view>
+
+<!-- 数据不存在 -->
+<view wx:if="{{nodata}}">
+  <template is="nodata" />
 </view>
