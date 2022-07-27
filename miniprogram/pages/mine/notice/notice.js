@@ -135,9 +135,6 @@ Page({
       content: '您将花费' + e.currentTarget.dataset.points + '积分兑换【' + e.currentTarget.dataset.title + '】' + '是否确认兑换?',
       success(res) {
         if (res.confirm) {
-          // wx.showLoading({
-          //   title: '处理中...',
-          // })
           let info = {
             nickName: app.globalData.nickName,
             avatarUrl: app.globalData.avatarUrl,
@@ -148,11 +145,6 @@ Page({
                 totalPoints: Number(that.data.totalPoints) - e.currentTarget.dataset.points
               })
               that.postAdd(e.currentTarget.dataset.id, e.currentTarget.dataset.title, e.currentTarget.dataset.baidu, e.currentTarget.dataset.url)
-              // wx.showToast({
-              //   title: "兑换成功",
-              //   icon: "none",
-              //   duration: 3000
-              // });
             } else {
               wx.showToast({
                 title: "程序有些小异常",
@@ -162,7 +154,6 @@ Page({
             }
 
           })
-          // wx.hideLoading()
         } else if (res.cancel) {
           console.log('用户点击取消')
         }

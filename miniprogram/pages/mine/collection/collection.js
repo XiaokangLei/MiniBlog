@@ -78,25 +78,6 @@ Page({
 
   },
   /**
-   * tab切换
-   * @param {} e 
-   */
-  // tabSelect: async function (e) {
-  //   let that = this;
-  //   console.log(e);
-  //   that.setData({
-  //     tabCur: e.currentTarget.dataset.id,
-  //     timeDesc: e.currentTarget.dataset.id === "1" ? "收藏时间：" : "点赞时间：",
-  //     scrollLeft: (e.currentTarget.dataset.id - 1) * 60,
-  //     postRelated: [],
-  //     nomore: false,
-  //     nodata: false,
-  //     page: 1
-  //   })
-
-  //   await that.getPostRelated(e.currentTarget.dataset.id)
-  // },
-  /**
    * 点击文章明细
    */
   bindPostDetail: function (e) {

@@ -11,7 +11,7 @@
     <view class="cu-item shadow">
       <view class='margin-tb-sm text-center text-bold text-xl text-black'>{{post.title}}</view>
       <view class="text-center margin-bottom-sm">{{m1.format(post._createTime)}}</view>
-      <view class="grid col-1 flex-sub padding-lr">
+      <view class="grid col-1 flex-sub padding-lr" wx:if="{{isPost}}">
         <view class="bg-img only-img" style="background-image:url({{post.defaultImageUrl}})" />
       </view>
       <view class='text-gray text-sm text-right padding' wx:if="{{post.title && isPost}}">

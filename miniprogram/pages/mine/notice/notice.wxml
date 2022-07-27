@@ -4,7 +4,7 @@
   <view class="cu-load loading text-orange"></view>
 </view>
 
-<view class="cu-card case margin-lr-sm">
+<view class="cu-card case margin-lr-xs">
   <view class="cu-item shadow" wx:for="{{notice}}" wx:key="idx" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
     <view class="image" data-path="{{item.path}}" id="{{item._id}}" data-db="mini_resource" bindtap="bindDetail">
       <image src="{{item.defaultImageUrl}}" mode="widthFix"></image>

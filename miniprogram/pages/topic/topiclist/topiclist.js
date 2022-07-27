@@ -42,12 +42,21 @@ Page({
     if (result.data.length > 0) {
       if (result.data[0].value['kinds']) {
         let labelList = await api.getNewPostsLable(result.data[0].value['kinds'][0])
-        that.setData({
-          kindList: result.data[0].value['kinds'],
-          kindCur: result.data[0].value['kinds'][0],
-          labelList: labelList.data[0].value['label'],
-          labelCur: labelList.data[0].value['label'][0]
-        })
+        if(labelList.data.length > 0){
+          that.setData({
+            kindList: result.data[0].value['kinds'],
+            kindCur: result.data[0].value['kinds'][0],
+            labelList: labelList.data[0].value['label'],
+            labelCur: labelList.data[0].value['label'][0]
+          })
+        }
+        else{
+          that.setData({
+            nodata: true,
+            loading: false
+          })
+        }
+        
       } else {
         that.setData({
           nodata: true,

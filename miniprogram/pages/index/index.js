@@ -57,7 +57,7 @@ Page({
       icon: 'goodsnewfill',
       color: 'orange',
       badge: 0,
-      name: '积分商城',
+      name: '源码资源',
       bindtap: "bindNotice"
     }],
     finishLoadFlag: false,
@@ -283,7 +283,7 @@ Page({
         })
 
         await that.getPostsList("", '_createTime')
-        let labelList = await api.getLabelList(app.globalData.openid, 1)
+        let labelList = await api.getLabelList(app.globalData.openid, 0)
         that.setData({
           labelList: labelList.result.data
         })
