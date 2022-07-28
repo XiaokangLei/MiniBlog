@@ -45,6 +45,15 @@
         <view class="detail-readmore-btn margin-bottom-xs" bindtap="readMore">观看视频，阅读更多...</view>
       </view>
     </view> -->
+    <view class="cu-bar bg-white"  wx:if="{{isResource && post.video}}">
+      <view class="action border-title">
+        <text class="text-xl text-bold text-blue">视频展示</text>
+        <text class="bg-gradual-blue" style="width:4rem"></text>
+      </view>
+    </view>
+    <view class="bg-video flex align-center margin-bottom-xxl" style="height: 1600rpx;" wx:if="{{isResource && post.video}}">
+      <video src="{{post.video}}" show-play-btn="{{true}}" controls="{{true}}"></video>
+    </view>
 
   </view>
 
