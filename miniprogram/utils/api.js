@@ -86,7 +86,7 @@ function getPostsById(id) {
 }
 
 /**
- * 获取消息列表
+ * 获取资源列表
  * @param {*} page 
  */
 function getNoticeLogsList(page, openId) {
@@ -127,6 +127,10 @@ function getReleaseLogsList(page) {
     .get()
 }
 
+/**
+ * 获取文章列表
+ * @param {*} page 
+ */
 function getNewPostsList(page, filter, orderBy) {
   let where = {}
   if (filter.title != undefined) {
@@ -222,6 +226,10 @@ function getNewPostsList(page, filter, orderBy) {
     }).get()
 }
 
+/**
+ * 获取类别列表
+ * @param {*} page 
+ */
 function getNewPostsKind(classify) {
 
   return db.collection('mini_config')
@@ -231,6 +239,10 @@ function getNewPostsKind(classify) {
     .get()
 }
 
+/**
+ * 获取标签列表
+ * @param {*} page 
+ */
 function getNewPostsLable(kind) {
 
   return db.collection('mini_config')
@@ -481,13 +493,13 @@ function checkPostComment(content) {
 /**
  * 获取打赏码
  */
-function getQrCode() {
-  return wx.cloud.getTempFileURL({
-    fileList: [{
-      fileID: 'cloud://test-91f3af.54ec-test-91f3af/common/1556347401340.jpg'
-    }]
-  })
-}
+// function getQrCode() {
+//   return wx.cloud.getTempFileURL({
+//     fileList: [{
+//       fileID: 'cloud://test-we0f3.7465-test-we0f3-1301386292/zanshang.jpg'
+//     }]
+//   })
+// }
 
 /**
  * 获取海报的文章二维码url
@@ -938,7 +950,7 @@ module.exports = {
   getPostsList: getPostsList,
   getPostDetail: getPostDetail,
   getPostRelated: getPostRelated,
-  getQrCode: getQrCode,
+  // getQrCode: getQrCode,
   addPostCollection: addPostCollection,
   addPostZan: addPostZan,
   deletePostCollectionOrZan: deletePostCollectionOrZan,
