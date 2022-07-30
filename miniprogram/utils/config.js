@@ -27,7 +27,6 @@ var postRelatedType = {
   }
 };
 
-// 评论审核通知模板
 // var subcributeTemplateId="10XxRQC7TIOQTjdDWczTF8Bokgwkd9pkE0j7EiGW8eM"
 var vipApplyTemplateId = 'mCInmCCR_RzdMDNvBN2ranJaTKX74-4BqP9w_R0IRKg'
 

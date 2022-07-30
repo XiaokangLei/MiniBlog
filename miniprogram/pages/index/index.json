@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "九月Online",
+  "navigationBarTitleText": "小贝校招",
   "enablePullDownRefresh": true,
   "usingComponents": {
     "image-loader": "../../components/image-loader/image-loader"

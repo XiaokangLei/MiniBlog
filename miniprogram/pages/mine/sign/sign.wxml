@@ -8,7 +8,7 @@
 </view>
 
 <!-- 日历组件 -->
-<view class="bg-white margin-sm radius-xl margin-top padding-bottom">
+<view class="bg-white margin-sm radius-xl margin-top-xl padding-bottom">
   <view class="padding-sm">
     <calendar id="calendar" calendarConfig="{{calendarConfig}}" bind:onTapDay="onTapDay" bind:afterTapDay="afterTapDay" bind:whenChangeMonth="whenChangeMonth" bind:afterCalendarRender="afterCalendarRender"></calendar>
   </view>

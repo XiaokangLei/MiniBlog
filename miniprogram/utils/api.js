@@ -934,6 +934,7 @@ function getTempUrl(fileID) {
  */
 function getSwiperList() {
   return db.collection('mini_swiper')
+    .orderBy('id', 'asc')
     .limit(5)
     .get()
 }

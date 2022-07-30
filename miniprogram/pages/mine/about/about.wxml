@@ -1,11 +1,10 @@
 <!--pages/mine/about/about.wxml-->
 <view class='margin-xl bg-white padding-xl radius-xl shadow-lg'>
-  <view class='text-center margin-bottom text-lg text-orange'>关于九月Online小程序</view>
+  <view class='text-center margin-bottom text-lg text-orange'>关于小贝校招小程序</view>
   <view class='text-content'>
-    <view>Hi！开发者~欢迎使用九月Online小程序！</view>
+    <view>Hi！开发者~欢迎使用小贝校招小程序！</view>
     <view class='margin-top-sm'>该项目是我个人开发的一款个人博客小程序。这个项目不仅有一些实用的小程序开发技巧，还有一些源码资源可供下载。后期将不定期更新一些小程序的解决方案，或者你有一些好的想法可以在GitHub里提交给我，我会加入到小程序里。</view>
     <view class='margin-top-sm'>项目是开源的，不收取任何费用，如果这个项目有帮到你，或者你觉得很赞，可以在GitHub里扫描赞赏码支持一下！</view>
-    <view class='margin-top-sm'>该项目你可以用于任何项目。作者我也是花了时间和精力的，不希望你拷贝一份，做一些修改发布就变成了自己是原创了，当然！希望注明一下我这个原作者٩(๑❛ᴗ❛๑)۶</view>
     <view class='margin-top-sm'>联系我：lxk201808@163.com</view>
     <view class='margin-top-sm'>更多功能敬请期待！</view>
   </view>

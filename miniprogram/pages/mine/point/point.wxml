@@ -99,7 +99,7 @@
 <view class="margin-top-sm bg-white">
   <view class="text-left text-black text-bold text-xl padding">邀请好友，得积分</view>
   <view class="text-center margin-tb-xs">
-    每日邀请一位新用户，可获得
+    每邀请一位新用户，可获得
     <text class="text-red">100</text>
     积分
   </view>
