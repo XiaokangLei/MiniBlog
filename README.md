@@ -79,7 +79,7 @@
 
 - 主要页面包括：首页最新、热门、标签页面，博客页面、评论、海报、收藏、点赞、分享、专题、个人中心页面、修改个人身份、日历签到、积分、积分兑换页面、VIP申请、历史版本、关于、后台管理页面
 
-  ![04](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/pages.jpg?sign=38bc9fb9d58f64ee115e254aba35e44c&t=1659151245)
+  ![04](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/pages.jpg?sign=cce8634280d5b4e841e0278a893c4df3&t=1659151955)
 
 ## 感谢
 
