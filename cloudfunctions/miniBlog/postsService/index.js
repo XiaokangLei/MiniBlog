@@ -53,8 +53,8 @@ exports.main = async (event, context) => {
  * @param {} event 
  */
 async function addPostQrCode(event) {
-  // let scene = 'timestamp=' + event.timestamp;
-  let scene = event.postId
+  let scene = 'timestamp=' + event.timestamp;
+  // let scene = event.postId
   let result = await cloud.openapi.wxacode.getUnlimited({
     scene: scene,
     page: 'pages/detail/detail'

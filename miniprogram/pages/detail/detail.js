@@ -63,7 +63,10 @@ Page({
       })
     }
     if (options.scene) {
-      blogId = decodeURIComponent(options.scene)
+      // _createTime
+      createTime = decodeURIComponent(options.scene)
+      let res = await api.getPostId(createTime.split('=')[1])
+      blogId = res.data[0]._id
       dbName == 'mini_posts'
       that.setData({
         isPost: true
@@ -733,7 +736,7 @@ Page({
       qrCodeUrl = qrCode.fileList[0].tempFileURL
     }
     if (qrCodeUrl == "") {
-      let addReult = await api.addPostQrCode(that.data.post._id, that.data.post._updateTime, that.data.dbName)
+      let addReult = await api.addPostQrCode(that.data.post._id, that.data.post._createTime, that.data.dbName)
       qrCodeUrl = addReult.result[0].tempFileURL
     }
     // 海报图片配置

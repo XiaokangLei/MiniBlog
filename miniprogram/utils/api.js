@@ -30,6 +30,19 @@ function getMemberInfo(openId) {
 }
 
 /**
+ * 获取postId信息
+ * @param {} createTime 
+ */
+function getPostId(createTime) {
+  return db.collection('mini_posts')
+    .where({
+      _createTime: createTime
+    })
+    .limit(1)
+    .get()
+}
+
+/**
  * 获取会员列表
  * @param {*} applyStatus 
  * @param {*} page 
@@ -989,6 +1002,7 @@ module.exports = {
   getAdvertConfig: getAdvertConfig,
   addSign: addSign,
   getMemberInfo: getMemberInfo,
+  getPostId: getPostId,
   getSignedDetail: getSignedDetail,
   addPoints: addPoints,
   applyVip: applyVip,
