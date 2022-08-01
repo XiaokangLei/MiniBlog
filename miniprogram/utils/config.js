@@ -1,7 +1,7 @@
 /**
  * 打赏二维码
  */
-var moneyUrl = "https://7465-test-we0f3-1301386292.tcb.qcloud.la/zanshang.jpg9"
+var moneyUrl = "https://7465-test-we0f3-1301386292.tcb.qcloud.la/zanshang.jpg"
 
 var fileIdPre = 'cloud://test-we0f3.7465-test-we0f3-1301386292/'
 

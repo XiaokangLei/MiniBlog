@@ -77,16 +77,23 @@
 
 ## 页面展示
 
-- 主要页面包括：首页最新、热门、标签页面，博客页面、评论、海报、收藏、点赞、分享、专题、个人中心页面、修改个人身份、日历签到、积分、积分兑换页面、VIP申请、历史版本、关于、后台管理页面
+- 主要页面包括：首页最新、热门、标签页面，博客页面、评论、海报、收藏、点赞、分享、专题、个人中心页面
 
   ![04](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/pages1.jpg?sign=c18f6ddf97d2467fceb03a115e96ad51&t=1659152386)
+
+- 修改个人身份、日历签到、积分、积分兑换页面、VIP申请、历史版本、关于、后台管理页面
+
   ![05](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/pages2.jpg?sign=2b3db0e3da22b3351083ad8fe6828d07&t=1659152403)
+
+- 管理后台CMS
+
+  ![06](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/cms.jpg?sign=150c3850baa7ee0002235bde24285e2c&t=1659321004)
 
 ## 感谢
 
-- UI组件库：Colour-UI 2.0
-- Markdown插件：Towxml 2.0
-- 日历插件：wx_calendar 小历同学
+- UI组件库：[Colour-UI 2.0](https://github.com/weilanwl/ColorUI/)
+- Markdown插件：[Towxml 2.0](https://github.com/sbfkcel/towxml)
+- 日历插件：[wx_calendar 小历同学](https://treadpit.github.io/wx_calendar/)
 
 ## 联系我
 

@@ -31,13 +31,13 @@
 .nav-list {
   display: flex;
   flex-wrap: wrap;
-  padding: 0px 30rpx 0px;
+  padding: 0px 16rpx 0px;
   justify-content: space-between;
 }
 
 .nav-li {
   padding: 30rpx;
-  border-radius: 20rpx;
+  border-radius: 24rpx;
   width: 45%;
   margin: 0 2.5% 40rpx;
   background-image: url(https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/0004.svg);
@@ -80,7 +80,7 @@
 .nav-name {
   font-size: 26rpx;
   text-transform: Capitalize;
-  margin-top: 20rpx;
+  margin-top: 24rpx;
   position: relative;
 }
 

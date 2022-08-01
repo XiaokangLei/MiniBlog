@@ -4,7 +4,7 @@
   <view class="nav-li bg-{{item.color || 'blue'}} light shadow" wx:for="{{classifyList}}" wx:key="index" id="{{item._id}}" data-tname="{{item.value.classifyName}}" bindtap='openTopicPosts'>
     <view class="nav-title">{{item.value.classifyName}}</view>
     <view class="nav-name">
-      <view class="text-cut" style="width:210rpx">{{item.value.classifyDesc}}</view>
+      <view class="text-cut" style="width:240rpx">{{item.value.classifyDesc}}</view>
     </view>
     <text class="cuIcon-{{item.icon || 'cascades'}} text-shadow text-xxl"></text>
   </view>
