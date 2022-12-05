@@ -79,15 +79,15 @@
 
 - 主要页面包括：首页最新、热门、标签页面，博客页面、评论、海报、收藏、点赞、分享、专题、个人中心页面
 
-  ![04](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/pages1.jpg?sign=c18f6ddf97d2467fceb03a115e96ad51&t=1659152386)
+  ![04](https://pic3.zhimg.com/80/v2-73186e270ebea450b656191841f6979a_1440w.webp)
 
 - 修改个人身份、日历签到、积分、积分兑换页面、VIP申请、历史版本、关于、后台管理页面
 
-  ![05](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/pages2.jpg?sign=2b3db0e3da22b3351083ad8fe6828d07&t=1659152403)
+  ![05](https://pic4.zhimg.com/80/v2-0cffaa4c7357fdd92425942024402d73_1440w.webp)
 
 - 管理后台CMS
 
-  ![06](https://7465-test-we0f3-1301386292.tcb.qcloud.la/others/cms.jpg?sign=150c3850baa7ee0002235bde24285e2c&t=1659321004)
+  ![06](https://pic3.zhimg.com/80/v2-a6f61d5d420279102232fdaeef991f0a_1440w.webp)
 
 ## 感谢
 
@@ -102,4 +102,4 @@
 
 ## 支持
 
-![05](https://7465-test-we0f3-1301386292.tcb.qcloud.la/zanshang.jpg?sign=45cde49a94ceae4a2f75f19455c92afa&t=1659151261)
+![05](https://pic3.zhimg.com/80/v2-a1225a9a1ea9b01aeb77ca915811fb5e_1440w.webp)
